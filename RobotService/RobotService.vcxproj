@@ -127,19 +127,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Battery.cpp" />
     <ClCompile Include="CombustionEngine.cpp" />
     <ClCompile Include="ElectricMotor.cpp" />
+    <ClCompile Include="FuelCell.cpp" />
     <ClCompile Include="HybridEngine.cpp" />
+    <ClCompile Include="ICommunication.cpp" />
     <ClCompile Include="IEngine.cpp" />
+    <ClCompile Include="IPowerSource.cpp" />
+    <ClCompile Include="LTECommunication.cpp" />
     <ClCompile Include="ProxyEngine.cpp" />
     <ClCompile Include="RobotService.cpp" />
+    <ClCompile Include="WiFiCommunication.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Battery.h" />
     <ClInclude Include="CombustionEngine.h" />
     <ClInclude Include="ElectricMotor.h" />
+    <ClInclude Include="FuelCell.h" />
+    <ClInclude Include="FuelType.h" />
     <ClInclude Include="HybridEngine.h" />
+    <ClInclude Include="ICommunication.h" />
     <ClInclude Include="IEngine.h" />
+    <ClInclude Include="IPowerSource.h" />
+    <ClInclude Include="LTECommunication.h" />
     <ClInclude Include="ProxyEngine.h" />
+    <ClInclude Include="WiFiCommunication.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
