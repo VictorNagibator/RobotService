@@ -128,15 +128,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Battery.cpp" />
+    <ClCompile Include="CentralController.cpp" />
     <ClCompile Include="CombustionEngine.cpp" />
+    <ClCompile Include="Drone.cpp" />
     <ClCompile Include="ElectricMotor.cpp" />
     <ClCompile Include="FuelCell.cpp" />
     <ClCompile Include="GPSNavigation.cpp" />
+    <ClCompile Include="GroundRobot.cpp" />
     <ClCompile Include="HybridEngine.cpp" />
     <ClCompile Include="ICommunication.cpp" />
+    <ClCompile Include="IController.cpp" />
     <ClCompile Include="IEngine.cpp" />
     <ClCompile Include="INavigation.cpp" />
     <ClCompile Include="IPowerSource.cpp" />
+    <ClCompile Include="IRobot.cpp" />
     <ClCompile Include="LidarNavigation.cpp" />
     <ClCompile Include="LTECommunication.cpp" />
     <ClCompile Include="ProxyEngine.cpp" />
@@ -146,16 +151,21 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Battery.h" />
+    <ClInclude Include="CentralController.h" />
     <ClInclude Include="CombustionEngine.h" />
+    <ClInclude Include="Drone.h" />
     <ClInclude Include="ElectricMotor.h" />
     <ClInclude Include="FuelCell.h" />
     <ClInclude Include="FuelType.h" />
     <ClInclude Include="GPSNavigation.h" />
+    <ClInclude Include="GroundRobot.h" />
     <ClInclude Include="HybridEngine.h" />
     <ClInclude Include="ICommunication.h" />
+    <ClInclude Include="IController.h" />
     <ClInclude Include="IEngine.h" />
     <ClInclude Include="INavigation.h" />
     <ClInclude Include="IPowerSource.h" />
+    <ClInclude Include="IRobot.h" />
     <ClInclude Include="LidarNavigation.h" />
     <ClInclude Include="LTECommunication.h" />
     <ClInclude Include="ProxyEngine.h" />
