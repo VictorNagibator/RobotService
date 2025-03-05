@@ -1,0 +1,27 @@
+#include "LidarNavigation.h"
+#include <iostream>
+
+LidarNavigation::LidarNavigation(int detectionRange, double laserFrequency, double startX = 0, double startY = 0)
+    : INavigation(startX, startY)
+{
+    this->detectionRange = detectionRange;
+    this->laserFrequency = laserFrequency;
+}
+
+void LidarNavigation::navigate(const std::string& destination) 
+{
+    std::cout << "Лидар: сканирую окружение в радиусе "
+        << detectionRange << " м. с частотой лазера " << laserFrequency
+        << " Гц для навигации до \"" << destination << "\".\n";
+}
+
+void LidarNavigation::updatePosition(double newX, double newY)
+{
+    updatePosition(newX, newY);
+    std::cout << "Лидар: обновлена позиция (" << x << ", " << y << ").\n";
+}
+
+void LidarNavigation::adjustRoute()
+{
+    std::cout << "Лидар: пытаюсь обнаружить и обойти препятствия...\n";
+}
