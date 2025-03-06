@@ -83,5 +83,16 @@ int main() {
     std::cout << "\n";
     controller.monitorRobots();
     std::cout << "=== Завершение работы системы ===\n";
+
+	delete grElectricMotor;
+	delete grEngineProxy;
+	delete grNavigation;
+	delete grWiFi;
+	delete grBattery;
+	delete drCombustionEngine;
+	delete drVisionNav;
+	delete drFourG;
+	delete drFuelCell;
+
     return 0;
 }
