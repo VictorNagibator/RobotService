@@ -1,25 +1,32 @@
 #include "ProxyEngine.h"
 #include <iostream>
 
-EngineProxy::EngineProxy(IEngine* engine) 
+ProxyEngine::ProxyEngine(IEngine* engine) 
 	: IEngine(engine->getName(), engine->getMaxRPM(), engine->getTemperatureThreshold())
 {
 	realEngine = engine;
 }
 
-void EngineProxy::start() 
+void ProxyEngine::start() 
 {
     if (currentTemperature > temperatureThreshold) {
         std::cout << "Текущая температура (" << currentTemperature
             << ") превышает максимальную (" << temperatureThreshold
             << "). Двигатель " << engineName << " не может запуститься.\n";
+
+		throw std::exception("Перегрев двигателя!");
     }
     else {
         realEngine->start();
     }
 }
 
-void EngineProxy::setRPM(int newRPM) 
+void ProxyEngine::stop()
+{
+    realEngine->stop();
+}
+
+void ProxyEngine::setRPM(int newRPM) 
 {
     if (currentTemperature > temperatureThreshold) {
         std::cout << "Текущая температура (" << currentTemperature

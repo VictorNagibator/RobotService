@@ -2,13 +2,13 @@
 #include "IEngine.h"
 
 //Прокси для двигателя, проверяющий температуру перед запуском или изменением мощности
-class EngineProxy : public IEngine {
+class ProxyEngine : public IEngine {
 private:
     IEngine* realEngine; //Реальный двигатель, которому делегируются вызовы
 public:
-    EngineProxy(IEngine* engine);
+    ProxyEngine(IEngine* engine);
 
     void start() override;
+    void stop() override;
     void setRPM(int newRPM) override;
 };
-

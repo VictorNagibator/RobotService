@@ -2,11 +2,21 @@
 
 void GroundRobot::startDelivery(const std::string& destination)
 {
-    std::cout << "Наземный робот " << robotID << " (" << modelName
-        << ") начинает доставку до " << destination << ".\n";
-    engine->start();
-    navigation->navigate(destination);
-    communication->sendData("Наземный робот: начал доставку.");
+    try
+    {
+        engine->start();
+        powerSource->consume(30); //Для примера тратим какое-то количество топлива или энергии
+        std::cout << "Наземный робот " << robotID << " (" << modelName
+            << ") начинает доставку до " << destination << ".\n";
+        navigation->navigate(destination);
+        communication->sendData("Наземный робот: начал доставку.");
+    }
+    catch (const std::exception& e)
+    {
+        std::cout << "Наземный робот " << robotID << " (" << modelName
+            << ") не может осуществить доставку: "
+            << e.what() << "\n";
+    }
 }
 
 void GroundRobot::stopDelivery() 
@@ -17,7 +27,7 @@ void GroundRobot::stopDelivery()
     communication->sendData("Наземный робот: прекратил доставку.");
 }
 
-void GroundRobot::updateStatus()
+void GroundRobot::checkStatus()
 {
     std::cout << "Наземный робот " << robotID
         << ": заряд " << powerSource->getCharge()

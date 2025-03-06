@@ -5,7 +5,7 @@
 class FuelCell : public IPowerSource {
 private:
     FuelType fuelType; //Тип топлива (например, дизель или 95)
-    double fuelLevel; //Текущий уровень топлива
+    double fuelLevel = 0; //Текущий уровень топлива
     int capacity; //Вместимость топливного бака
 public:
     FuelCell(FuelType fuelType, int capacity);

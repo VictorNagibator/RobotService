@@ -1,7 +1,7 @@
 #include "VisionNavigation.h"
 #include <iostream>
 
-VisionNavigation::VisionNavigation(const std::string& resolution, int frameRate, double startX = 0, double startY = 0)
+VisionNavigation::VisionNavigation(const std::string& resolution, int frameRate, double startX, double startY)
     : INavigation(startX, startY)
 {
     this->resolution = resolution;

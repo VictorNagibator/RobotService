@@ -6,7 +6,7 @@ class LTECommunication : public ICommunication
 private:
     int latency; //Задержка в мс
 public:
-    LTECommunication(int latency);
+    LTECommunication(int signalStrength, int latency);
 
     void establishConnection() override;
     void sendData(const std::string& data) override;

@@ -17,11 +17,8 @@ void Battery::recharge()
 }
 
 void Battery::consume(double usage) {
-    if (usage > currentCharge) {
-        currentCharge = 0;
-    }
-    else {
-        currentCharge -= usage;
-    }
+    if (currentCharge < usage) throw std::exception("Недостаточно энергии!");
+
+	currentCharge -= usage;
     std::cout << "Батарея разряжается. Текущий заряд: " << getCharge() << "%\n";
 }

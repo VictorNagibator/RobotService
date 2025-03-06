@@ -1,9 +1,8 @@
 #include "WiFiCommunication.h"
 #include <iostream>
 
-WiFiCommunication::WiFiCommunication(int signalStrength, int channel)
+WiFiCommunication::WiFiCommunication(int signalStrength, int channel) : ICommunication(signalStrength)
 {
-    this->signalStrength = signalStrength;
     this->channel = channel;
 }
 
@@ -23,8 +22,4 @@ std::string WiFiCommunication::receiveCommand()
     std::string cmd = "WiFi: некая команда"; //Можно будет реализовать реальное получение команды
     std::cout << cmd << "\n";
     return cmd;
-}
-
-void WiFiCommunication::updateSignalStrength(int newStrength) {
-    signalStrength = newStrength;
 }

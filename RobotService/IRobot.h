@@ -19,5 +19,5 @@ public:
 
     virtual void startDelivery(const std::string& destination) = 0; //Начать доставку
     virtual void stopDelivery() = 0; //Закончить доставку
-    virtual void updateStatus() = 0; //Обновить состояние робота
+    virtual void checkStatus() = 0; //Узнать состояние робота
 };

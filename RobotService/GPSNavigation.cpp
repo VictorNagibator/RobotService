@@ -1,7 +1,7 @@
 #include "GPSNavigation.h"
 #include <iostream>
 
-GPSNavigation::GPSNavigation(double accuracy, int satelliteCount, double startX = 0, double startY = 0)
+GPSNavigation::GPSNavigation(double accuracy, int satelliteCount, double startX, double startY)
     : INavigation(startX, startY)
 {
     this->accuracy = accuracy;

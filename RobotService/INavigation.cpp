@@ -1,6 +1,6 @@
 #include "INavigation.h"
 
-INavigation::INavigation(double startX = 0, double startY = 0)
+INavigation::INavigation(double startX, double startY)
 {
 	x = startX;
 	y = startY;

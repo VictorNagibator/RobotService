@@ -8,6 +8,10 @@ void CentralController::addRobot(IRobot* robot)
 
 void CentralController::dispatchDelivery(IRobot* robot, const std::string& destination)
 {
+    //Можно работать только с роботами, которые есть в системе
+    if (std::find(robots.begin(), robots.end(), robot) == robots.end()) 
+		throw std::invalid_argument("Робот не зарегистрирован в системе!");
+
     std::cout << controllerName << ": назначение доставки до " << destination << "\n";
     robot->startDelivery(destination);
 
@@ -20,6 +24,6 @@ void CentralController::monitorRobots()
 {
     std::cout << controllerName << ": проверяем состояние роботов...\n";
     for (auto r : robots) {
-        r->updateStatus();
+        r->checkStatus();
     }
 }

@@ -1,6 +1,11 @@
 #include "LTECommunication.h"
 #include <iostream>
 
+LTECommunication::LTECommunication(int signalStrength, int latency) : ICommunication(signalStrength)
+{
+    this->latency = latency;
+}
+
 void LTECommunication::establishConnection() 
 {
     std::cout << "4G (Latency: " 
