@@ -9,7 +9,7 @@ ProxyEngine::ProxyEngine(IEngine* engine)
 
 void ProxyEngine::start() 
 {
-    if (currentTemperature > temperatureThreshold) {
+    if (realEngine->getTemperature() > realEngine->getTemperatureThreshold()) {
         std::cout << "Текущая температура (" << currentTemperature
             << ") превышает максимальную (" << temperatureThreshold
             << "). Двигатель " << engineName << " не может запуститься.\n";
@@ -28,7 +28,7 @@ void ProxyEngine::stop()
 
 void ProxyEngine::setRPM(int newRPM) 
 {
-    if (currentTemperature > temperatureThreshold) {
+    if (realEngine->getTemperature() > realEngine->getTemperatureThreshold()) {
         std::cout << "Текущая температура (" << currentTemperature
             << ") превышает максимальную (" << temperatureThreshold
             << "). Нельзя увеличить обороты " << engineName << ".\n";
@@ -36,4 +36,34 @@ void ProxyEngine::setRPM(int newRPM)
     else {
         realEngine->setRPM(newRPM);
     }
+}
+
+int ProxyEngine::getRPM()
+{
+	return realEngine->getRPM();
+}
+
+void ProxyEngine::setTemperature(int newTemperature)
+{
+	realEngine->setTemperature(newTemperature);
+}
+
+int ProxyEngine::getTemperature()
+{
+	return realEngine->getTemperature();
+}
+
+std::string ProxyEngine::getName()
+{
+	return realEngine->getName();
+}
+
+int ProxyEngine::getMaxRPM()
+{
+	return realEngine->getMaxRPM();
+}
+
+int ProxyEngine::getTemperatureThreshold()
+{
+	return realEngine->getTemperatureThreshold();
 }
