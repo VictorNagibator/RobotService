@@ -148,6 +148,8 @@
     <ClCompile Include="RobotService.cpp" />
     <ClCompile Include="VisionNavigation.cpp" />
     <ClCompile Include="WiFiCommunication.cpp" />
+    <ClCompile Include="YandexNavigationAdapter.cpp" />
+    <ClCompile Include="YandexNavigationSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Battery.h" />
@@ -171,6 +173,8 @@
     <ClInclude Include="ProxyEngine.h" />
     <ClInclude Include="VisionNavigation.h" />
     <ClInclude Include="WiFiCommunication.h" />
+    <ClInclude Include="YandexNavigationAdapter.h" />
+    <ClInclude Include="YandexNavigationSystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

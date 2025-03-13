@@ -13,4 +13,3 @@ public:
     void dispatchDelivery(IRobot* robot, const std::string& destination) override;
     void monitorRobots() override;
 };
-
