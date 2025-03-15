@@ -84,6 +84,24 @@
     <ClCompile Include="YandexNavigationAdapter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Iterator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IAggregate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Element.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MyListIterator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MyList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProxyIterator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IEngine.h">
@@ -153,6 +171,24 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="YandexNavigationAdapter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Iterator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IAggregate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Element.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyListIterator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProxyIterator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
