@@ -4,7 +4,7 @@
 
 //Связный список с итератором
 template <typename T>
-class MyList {
+class MyList : public IAggregate<T> {
 private:
     Element<T>* root = nullptr; //Корневой узел списка
 public:

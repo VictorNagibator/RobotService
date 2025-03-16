@@ -1,16 +1,27 @@
 #include "CentralController.h"
+#include "ProxyIterator.h"
 
 void CentralController::addRobot(IRobot* robot)
 {
-    robots.push_back(robot);
+    robots->push(robot);
     std::cout << controllerName << ": робот добавлен.\n";
 }
 
 void CentralController::dispatchDelivery(IRobot* robot, const std::string& destination)
 {
-    //ћожно работать только с роботами, которые есть в системе
-    if (std::find(robots.begin(), robots.end(), robot) == robots.end()) 
-		throw std::invalid_argument("–обот не зарегистрирован в системе!");
+	//ћожно назначать доставку только зарегистрированным роботам
+	bool isRobotInCollection = false;
+
+    //ѕолучаем прокси итератор на коллекцию роботов
+    auto it = ProxyIterator<IRobot*>(robots->begin());
+    while (it.hasNext()) {
+        if (*(it.next()) == robot) {
+            isRobotInCollection = true;
+            break;
+        }
+    }
+		
+    if (!isRobotInCollection) throw std::invalid_argument("–обот не зарегистрирован в системе!");
 
     std::cout << controllerName << ": назначение доставки до " << destination << "\n";
     robot->startDelivery(destination);
@@ -23,19 +34,16 @@ void CentralController::dispatchDelivery(IRobot* robot, const std::string& desti
 void CentralController::monitorRobots()
 {
     std::cout << controllerName << ": провер€ем состо€ние роботов...\n";
-    for (auto r : robots) {
-        r->checkStatus();
+    //ѕолучаем прокси итератор на коллекцию роботов
+    auto it = ProxyIterator<IRobot*>(robots->begin());
+    while (it.hasNext()) {
+        IRobot* currentRobot = *(it.next());
+        //¬ызываем обновление состо€ни€ дл€ каждого робота
+        currentRobot->checkStatus();
     }
 }
 
 void CentralController::removeRobot(IRobot* robot)
 {
-	auto it = std::find(robots.begin(), robots.end(), robot);
-	if (it != robots.end()) {
-		robots.erase(it);
-		std::cout << controllerName << ": робот удален.\n";
-	}
-	else {
-		std::cout << controllerName << ": робот не найден.\n";
-	}
+	robots->remove(robot);
 }
