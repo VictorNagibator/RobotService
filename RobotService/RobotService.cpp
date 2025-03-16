@@ -35,6 +35,8 @@ int main() {
     }
     std::cout << std::endl;
 
+	list.remove(4);
+
     it.reset();
     std::cout << "Повторный обход списка:\n";
     while (it.hasNext()) {

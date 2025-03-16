@@ -36,4 +36,10 @@ public:
     {
 		return nextNode;
     }
+
+    //ѕозвол€ет обновить указатель на следующий узел.
+    void setNext(Element<T>* next) 
+    {
+        nextNode = next;
+    }
 };

@@ -27,3 +27,15 @@ void CentralController::monitorRobots()
         r->checkStatus();
     }
 }
+
+void CentralController::removeRobot(IRobot* robot)
+{
+	auto it = std::find(robots.begin(), robots.end(), robot);
+	if (it != robots.end()) {
+		robots.erase(it);
+		std::cout << controllerName << ": робот удален.\n";
+	}
+	else {
+		std::cout << controllerName << ": робот не найден.\n";
+	}
+}
