@@ -34,7 +34,7 @@ void CentralController::dispatchDelivery(IRobot* robot, const std::string& desti
 void CentralController::monitorRobots()
 {
     std::cout << controllerName << ": провер€ем состо€ние роботов...\n";
-    //ѕолучаем прокси итератор на коллекцию роботов
+    //ѕолучаем прокси итератор на коллекцию роботов дл€ автоматического удалени€
     auto it = ProxyIterator<IRobot*>(robots->begin());
     while (it.hasNext()) {
         IRobot* currentRobot = *(it.next());

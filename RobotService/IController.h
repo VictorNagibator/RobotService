@@ -6,7 +6,7 @@ class IController {
 protected:
     std::string controllerName;
 public:
-    IController(const std::string& name);
+	IController(const std::string& name) : controllerName(name) {};
 
     virtual void addRobot(IRobot* robot) = 0;
 	virtual void removeRobot(IRobot* robot) = 0;

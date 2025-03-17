@@ -130,6 +130,10 @@
     <ClCompile Include="Battery.cpp" />
     <ClCompile Include="CentralController.cpp" />
     <ClCompile Include="CombustionEngine.cpp" />
+    <ClCompile Include="CommunicationDecorator.cpp" />
+    <ClCompile Include="CommunicationEncryptorDecorator.cpp" />
+    <ClCompile Include="CommunicationPrinterDecorator.cpp" />
+    <ClCompile Include="CommunicationTimestampDecorator.cpp" />
     <ClCompile Include="Drone.cpp" />
     <ClCompile Include="ElectricMotor.cpp" />
     <ClCompile Include="Element.cpp" />
@@ -151,6 +155,7 @@
     <ClCompile Include="MyList.cpp" />
     <ClCompile Include="ProxyEngine.cpp" />
     <ClCompile Include="ProxyIterator.cpp" />
+    <ClCompile Include="RobotGroup.cpp" />
     <ClCompile Include="RobotService.cpp" />
     <ClCompile Include="VisionNavigation.cpp" />
     <ClCompile Include="WiFiCommunication.cpp" />
@@ -161,6 +166,10 @@
     <ClInclude Include="Battery.h" />
     <ClInclude Include="CentralController.h" />
     <ClInclude Include="CombustionEngine.h" />
+    <ClInclude Include="CommunicationDecorator.h" />
+    <ClInclude Include="CommunicationEncryptorDecorator.h" />
+    <ClInclude Include="CommunicationPrinterDecorator.h" />
+    <ClInclude Include="CommunicationTimestampDecorator.h" />
     <ClInclude Include="Drone.h" />
     <ClInclude Include="ElectricMotor.h" />
     <ClInclude Include="Element.h" />
@@ -183,6 +192,7 @@
     <ClInclude Include="MyList.h" />
     <ClInclude Include="ProxyEngine.h" />
     <ClInclude Include="ProxyIterator.h" />
+    <ClInclude Include="RobotGroup.h" />
     <ClInclude Include="VisionNavigation.h" />
     <ClInclude Include="WiFiCommunication.h" />
     <ClInclude Include="YandexNavigationAdapter.h" />

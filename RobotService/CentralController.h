@@ -1,7 +1,6 @@
 #pragma once
 #include "IController.h"
-#include "IAggregate.h"
-#include <vector>
+#include "MyList.h"
 
 //Центральный контроллер, распределяющий задания и мониторящий роботов
 class CentralController : public IController {
@@ -9,7 +8,7 @@ private:
 	IAggregate<IRobot*>* robots; //Коллекция роботов
 public:
     CentralController(const std::string& name, IAggregate<IRobot*>* collection) 
-        : IController(name), robots(collection) {}
+        : IController(name), robots(collection) {} 
 
     void addRobot(IRobot* robot) override;
 	void removeRobot(IRobot* robot) override;

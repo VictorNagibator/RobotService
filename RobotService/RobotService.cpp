@@ -14,95 +14,106 @@
 #include "CentralController.h"
 #include "MyList.h"
 #include "ProxyIterator.h"
+#include "YandexNavigationAdapter.h"
+#include "CommunicationEncryptorDecorator.h"
+#include "CommunicationTimestampDecorator.h"
+#include "CommunicationPrinterDecorator.h"
+#include "RobotGroup.h"
+#include "HybridEngine.h"
 
 int main() {
     //Исправляем кодировку консоли для корректного отображения кириллицы
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
 
-    std::cout << "=== Конфигурация системы курьерской службы ===\n";
+    std::cout << "=== Демонстрация адаптера ===\n";
+	IEngine* grElectricMotor = new ElectricMotor("EM-GR-01", 500, 75);
+	INavigation* grNavigation = new YandexNavigationAdapter(1, 1); //Создаем адаптер
+	ICommunication* grWiFi = new WiFiCommunication(45, 6);
+	IPowerSource* grBattery = new Battery(3000);
+    //Используем его для робота!
+	GroundRobot robot1 = GroundRobot(1, "Model-X", grElectricMotor, grNavigation, grWiFi, grBattery);
+    //Продемонстрируем работу адаптера через начало доставки
+	grBattery->recharge();
+	robot1.startDelivery("Улица Ленина, 5");
 
-    //Создаем компоненты для наземного робота
-    //1. Двигатель: Электродвигатель оборачивается в EngineProxy
-    IEngine* grElectricMotor = new ElectricMotor("EM-GR-01", 500, 75);
-    IEngine* grEngineProxy = new ProxyEngine(grElectricMotor);
-    //2. Навигационная система: GPS
-    INavigation* grNavigation = new GPSNavigation(3.5, 8);
-    //3. Средство связи: WiFi
-    ICommunication* grWiFi = new WiFiCommunication(45, 6);
-    //4. Источник питания: батарея
-    IPowerSource* grBattery = new Battery(3000);
+    std::cout << "\n=== Демонстрация декораторов для ICommunication в разных порядках ===\n";
+    //Берём коммуникацию через WiFi, созданную выше
+    //Порядок 1
+    ICommunication* comm1 = new CommunicationEncryptorDecorator(grWiFi);
+    ICommunication* comm2 = new CommunicationTimestampDecorator(comm1);
+    ICommunication* comm3 = new CommunicationPrinterDecorator(comm2);
 
-    //Создаем наземного робота с такими компонентами
-    GroundRobot groundRobot(1, "Model-X", grEngineProxy,
-        grNavigation, grWiFi, grBattery);
+    std::cout << "\n--- Порядок 1: Вывод на экран -> Метка времени -> Шифрование ---\n";
+    //Создадим ещё одного робота, но с другим средством коммуникации
+    GroundRobot robot2 = GroundRobot(2, "Model-X-DECORATED", grElectricMotor, grNavigation, comm3, grBattery);
+    robot2.startDelivery("Улица Молодежная, 61");
 
-    //Создаем компоненты для летающего робота
-    //1. Двигатель: внутреннего сгорания
-    IEngine* drCombustionEngine = new CombustionEngine("CE-DR-01", 1000, 90);
-    //2. Навигационная система: зрение через камеры
-    INavigation* drVisionNav = new VisionNavigation("1080p", 30);
-    //3. Средство связи: 4G
-    ICommunication* drFourG = new LTECommunication(30, 50);
-    //4. Источник питания: топливный элемент
-    IPowerSource* drFuelCell = new FuelCell(FuelType::A95, 50);
+    //Порядок 2
+    ICommunication* gr4G = new LTECommunication(45, 50);
+    ICommunication* comm4 = new CommunicationPrinterDecorator(gr4G);
+    ICommunication* comm5 = new CommunicationTimestampDecorator(comm4);
+    ICommunication* comm6 = new CommunicationEncryptorDecorator(comm5);
 
-    //Создаем летающего робота с заданными компонентами.
-    Drone drone(2, "Model-D", drCombustionEngine,
-        drVisionNav, drFourG, drFuelCell);
+    std::cout << "\n--- Порядок 2: Шифрование -> Метка времени -> Вывод на экран ---\n";
+    //Третий робот
+    GroundRobot robot3 = GroundRobot(3, "Model-X-DECORATED-v 2.0", grElectricMotor, grNavigation, comm6, grBattery);
+    robot3.startDelivery("Улица Молодежная, 62");
 
-    //Создаем центральный контроллер и регистрируем роботов
-    MyList<IRobot*> list;
+    std::cout << "\n=== Демонстрация композита (RobotGroup) ===\n";
+    //Возьмем двух ранее созданных роботов и создаем группу роботов
+	IAggregate<IRobot*>* groupAggregate1 = new MyList<IRobot*>; //Создаем агрегат для группы
+    RobotGroup* group1 = new RobotGroup(groupAggregate1);
+    group1->addRobot(&robot2);
+    group1->addRobot(&robot3);
 
-    CentralController controller("MainController", &list);
-    controller.addRobot(&groundRobot);
-    controller.addRobot(&drone);
+    //Создаем вторую группу и включаем в неё ещё одного робота и первую группу 
+    //(Демонстрация вложенных групп)
+    IAggregate<IRobot*>* groupAggregate2 = new MyList<IRobot*>;
+    RobotGroup* group2 = new RobotGroup(groupAggregate2);
+    group2->addRobot(&robot1);
+    group2->addRobot(group1);
 
-    //Демонстрация делегирования:
-    //Каждый робот при запуске доставки делегирует вызов своему двигателю, навигационной и коммуникационной системам.
-    std::cout << "\n=== Мониторинг состояния роботов ===\n";
+    //Выполняем доставку для всей группы 
+    group2->startDelivery("Склад №1");
+    group2->stopDelivery();
+    group2->checkStatus();
+
+    std::cout << "\n=== Демонстрация итератора отдельно и в Центральном контроллере ===\n";
+    //Создаем агрегат роботов с помощью MyList
+    MyList<IRobot*>* robotList = new MyList<IRobot*>;
+    robotList->push(&robot3);
+    robotList->push(&robot1);
+    robotList->push(&robot2);
+
+    std::cout << "\nОбход списка роботов через итератор:\n";
+    ProxyIterator<IRobot*> proxyIt(robotList->begin()); //Используем прокси, чтобы потом не чистить память
+    while (proxyIt.hasNext()) {
+        IRobot* robot = *(proxyIt.next());
+        robot->checkStatus(); //Проверяем состояние роботов, например
+    }
+
+    //Создаем центральный контроллер, используя агрегат 
+    CentralController controller("MainController", robotList);
+    std::cout << "\nМониторинг роботов через CentralController:\n";
     controller.monitorRobots();
 
-    std::cout << "\n=== Распределение заданий ===\n";
-    //Запускаем доставку: для наземного робота не хватает заряда
-    controller.dispatchDelivery(&groundRobot, "пр-т Ленина, 10");
-    std::cout << "\n";
-    //Теперь зарядим
-    grBattery->recharge();
-    controller.dispatchDelivery(&groundRobot, "пр-т Ленина, 10");
-    std::cout << "\n";
-    //Затем обновим температуру двигателя наземного робота до достаточно высокой для запуска
-    grEngineProxy->setTemperature(100);
-    //Теперь двигатель корректно не будет запускаться
-    controller.dispatchDelivery(&groundRobot, "ул. Анатолия, 15");
-    std::cout << "\n";
-
-    //Для дрона без топлива не получится начать доставку
-    controller.dispatchDelivery(&drone, "ул Молодежная, 5");
-    std::cout << "\n";
-    //Теперь зарядим и всё получится
-    drFuelCell->recharge();
-    controller.dispatchDelivery(&drone, "ул Молодежная, 6");
-
-    std::cout << "\n";
-    controller.monitorRobots();
-
-	controller.removeRobot(&groundRobot);
-
-    std::cout << "\n";
-    controller.monitorRobots();
-
-    std::cout << "=== Завершение работы системы ===\n";
-
-    delete grElectricMotor;
-    delete grEngineProxy;
-    delete grNavigation;
-    delete grWiFi;
+    delete robotList;
+    delete group2;
+	delete group1;
+    delete groupAggregate2;
+	delete groupAggregate1;
+	delete comm6;
+	delete comm5;
+	delete comm4;
+	delete comm3;
+	delete comm2;
+	delete comm1;
     delete grBattery;
-    delete drCombustionEngine;
-    delete drVisionNav;
-    delete drFourG;
-    delete drFuelCell;
+    delete grWiFi;
+    delete gr4G;
+	delete grNavigation;
+	delete grElectricMotor;
 
     return 0;
 }

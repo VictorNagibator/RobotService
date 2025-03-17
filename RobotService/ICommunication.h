@@ -14,4 +14,7 @@ public:
     virtual void sendData(const std::string& data) = 0;
     //Приём управляющих команд от центрального контроллера
     virtual std::string receiveCommand() = 0;
+    
+	//Получение силы сигнала
+	int getSignalStrength();
 };
