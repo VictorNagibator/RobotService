@@ -42,22 +42,21 @@ int main() {
     //Порядок 1
     ICommunication* comm1 = new CommunicationEncryptorDecorator(grWiFi);
     ICommunication* comm2 = new CommunicationTimestampDecorator(comm1);
-    ICommunication* comm3 = new CommunicationPrinterDecorator(comm2);
 
-    std::cout << "\n--- Порядок 1: Вывод на экран -> Метка времени -> Шифрование ---\n";
+    std::cout << "\n--- Порядок 1: Метка времени -> Шифрование ---\n";
     //Создадим ещё одного робота, но с другим средством коммуникации
-    GroundRobot robot2 = GroundRobot(2, "Model-X-DECORATED", grElectricMotor, grNavigation, comm3, grBattery);
+    GroundRobot robot2 = GroundRobot(2, "Model-X-DECORATED", grElectricMotor, grNavigation, comm2, grBattery);
     robot2.startDelivery("Улица Молодежная, 61");
 
     //Порядок 2
     ICommunication* gr4G = new LTECommunication(45, 50);
-    ICommunication* comm4 = new CommunicationPrinterDecorator(gr4G);
-    ICommunication* comm5 = new CommunicationTimestampDecorator(comm4);
-    ICommunication* comm6 = new CommunicationEncryptorDecorator(comm5);
+    ICommunication* comm3 = new CommunicationPrinterDecorator(gr4G);
+    ICommunication* comm4 = new CommunicationTimestampDecorator(comm3);
+    ICommunication* comm5 = new CommunicationEncryptorDecorator(comm4);
 
     std::cout << "\n--- Порядок 2: Шифрование -> Метка времени -> Вывод на экран ---\n";
     //Третий робот
-    GroundRobot robot3 = GroundRobot(3, "Model-X-DECORATED-v 2.0", grElectricMotor, grNavigation, comm6, grBattery);
+    GroundRobot robot3 = GroundRobot(3, "Model-X-DECORATED-v 2.0", grElectricMotor, grNavigation, comm5, grBattery);
     robot3.startDelivery("Улица Молодежная, 62");
 
     std::cout << "\n=== Демонстрация композита (RobotGroup) ===\n";
@@ -75,19 +74,22 @@ int main() {
     group2->addRobot(group1);
 
     //Выполняем доставку для всей группы 
+	std::cout << "\n\tДоставка для группы роботов\n";
     group2->startDelivery("Склад №1");
+    std::cout << "\n\tКонец доставки для группы роботов\n";
     group2->stopDelivery();
+    std::cout << "\n\tПроверка состояния для группы роботов\n";
     group2->checkStatus();
 
     std::cout << "\n=== Демонстрация итератора отдельно и в Центральном контроллере ===\n";
     //Создаем агрегат роботов с помощью MyList
     MyList<IRobot*>* robotList = new MyList<IRobot*>;
-    robotList->push(&robot3);
     robotList->push(&robot1);
     robotList->push(&robot2);
+    robotList->push(&robot3);
 
-    std::cout << "\nОбход списка роботов через итератор:\n";
-    ProxyIterator<IRobot*> proxyIt(robotList->begin()); //Используем прокси, чтобы потом не чистить память
+    std::cout << "Обход списка роботов через итератор:\n";
+    ProxyIterator<IRobot*> proxyIt(robotList->begin()); //Используем прокси, который сам чистит за собой память
     while (proxyIt.hasNext()) {
         IRobot* robot = *(proxyIt.next());
         robot->checkStatus(); //Проверяем состояние роботов, например
@@ -103,7 +105,6 @@ int main() {
 	delete group1;
     delete groupAggregate2;
 	delete groupAggregate1;
-	delete comm6;
 	delete comm5;
 	delete comm4;
 	delete comm3;
