@@ -154,6 +154,8 @@
     <ClCompile Include="Iterator.cpp" />
     <ClCompile Include="LidarNavigation.cpp" />
     <ClCompile Include="LTECommunication.cpp" />
+    <ClCompile Include="MapSegment.cpp" />
+    <ClCompile Include="MapSegmentFactory.cpp" />
     <ClCompile Include="MyListIterator.cpp" />
     <ClCompile Include="MyList.cpp" />
     <ClCompile Include="ProxyEngine.cpp" />
@@ -195,6 +197,8 @@
     <ClInclude Include="Iterator.h" />
     <ClInclude Include="LidarNavigation.h" />
     <ClInclude Include="LTECommunication.h" />
+    <ClInclude Include="MapSegment.h" />
+    <ClInclude Include="MapSegmentFactory.h" />
     <ClInclude Include="MyListIterator.h" />
     <ClInclude Include="MyList.h" />
     <ClInclude Include="ProxyEngine.h" />
