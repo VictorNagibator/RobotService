@@ -1,12 +1,14 @@
 #pragma once
 #include <string>
+#include "IEnvironment.h"
 
 //јбстрактный класс дл€ средств св€зи
 class ICommunication {
 protected:
+    IEnvironment* environment; //—реда, в которой работает средство св€зи
     int signalStrength; //—ила сигнала
 public:
-    ICommunication(int signalStrength);
+    ICommunication(int signalStrength, IEnvironment* env);
 
     //”становление св€зи с центральным контроллером
     virtual void establishConnection() = 0;
@@ -16,5 +18,8 @@ public:
     virtual std::string receiveCommand() = 0;
     
 	//ѕолучение силы сигнала
-	int getSignalStrength();
+	int getSignalStrength() const;
+
+	//ћожно помен€ть среду (например, робот попал под ливень или помен€л способ передвижени€)
+	virtual void setEnvironment(IEnvironment* env) = 0;
 };

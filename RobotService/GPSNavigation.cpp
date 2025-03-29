@@ -10,8 +10,9 @@ GPSNavigation::GPSNavigation(double accuracy, int satelliteCount, double startX,
 
 void GPSNavigation::navigate(const std::string& destination)
 {
+    //Точность корректируется в зависимости от среды
     std::cout << "GPS-навигация: просчитываем маршрут до \"" << destination
-        << "\" с точностью " << accuracy
+		<< "\" с точностью " << accuracy - environment->getNavigationAccuracyFactor() 
         << " м., используя " << satelliteCount << " спутников.\n";
 }
 
@@ -23,5 +24,6 @@ void GPSNavigation::updatePosition(double newX, double newY)
 
 void GPSNavigation::adjustRoute()
 {
-    std::cout << "GPS: пересчёт маршрута...\n";
+    std::cout << "GPS: пересчёт маршрута в среде: " 
+        << environment->getEnvironmentName() << "...\n";
 }

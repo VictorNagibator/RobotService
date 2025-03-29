@@ -5,7 +5,9 @@ void CombustionEngine::start() {
     currentRPM = RPMonInitial;
     std::cout << "Двигатель внутреннего сгорания " << engineName
         << " заводится. (Обороты: " << currentRPM
-        << " / " << maxRPM << ")\n";
+        << " / " << maxRPM << "; " 
+        << "сопротивление среды: " << environment->getResistance()
+        << ").\n";
 }
 
 void CombustionEngine::stop() {

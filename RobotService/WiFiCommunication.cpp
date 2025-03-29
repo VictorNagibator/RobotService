@@ -14,7 +14,8 @@ void WiFiCommunication::establishConnection()
 
 void WiFiCommunication::sendData(const std::string& data) 
 {
-    std::cout << "WiFi (Канал " << channel << ") отправляет данные: " << data << "\n";
+    std::cout << "WiFi (Канал " << channel << ") отправляет данные: " << data 
+        << ". Коэффициент затухания сигнала: " << environment->getCommunicationAttenuation() << "\n";
 }
 
 std::string WiFiCommunication::receiveCommand()  

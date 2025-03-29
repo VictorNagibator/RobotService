@@ -1,10 +1,11 @@
 #include "IEngine.h"
 
-IEngine::IEngine(const std::string& name, int maxRPM, int temperatureThreshold)
+IEngine::IEngine(const std::string& name, int maxRPM, int temperatureThreshold, IEnvironment* environment)
 {
     engineName = name;
     this->maxRPM = maxRPM;
     this->temperatureThreshold = temperatureThreshold;
+	this->environment = environment;
 }
 
 void IEngine::setRPM(int newRPM)
@@ -45,4 +46,9 @@ int IEngine::getMaxRPM()
 int IEngine::getTemperatureThreshold()
 {
     return temperatureThreshold;
+}
+
+void IEngine::setEnvironment(IEnvironment* env)
+{
+	environment = env;
 }

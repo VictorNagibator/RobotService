@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AirEnvironment.cpp" />
     <ClCompile Include="Battery.cpp" />
     <ClCompile Include="CentralController.cpp" />
     <ClCompile Include="CombustionEngine.cpp" />
@@ -139,12 +140,14 @@
     <ClCompile Include="Element.cpp" />
     <ClCompile Include="FuelCell.cpp" />
     <ClCompile Include="GPSNavigation.cpp" />
+    <ClCompile Include="GroundEnvironment.cpp" />
     <ClCompile Include="GroundRobot.cpp" />
     <ClCompile Include="HybridEngine.cpp" />
     <ClCompile Include="IAggregate.cpp" />
     <ClCompile Include="ICommunication.cpp" />
     <ClCompile Include="IController.cpp" />
     <ClCompile Include="IEngine.cpp" />
+    <ClCompile Include="IEnvironment.cpp" />
     <ClCompile Include="INavigation.cpp" />
     <ClCompile Include="IPowerSource.cpp" />
     <ClCompile Include="IRobot.cpp" />
@@ -158,11 +161,13 @@
     <ClCompile Include="RobotGroup.cpp" />
     <ClCompile Include="RobotService.cpp" />
     <ClCompile Include="VisionNavigation.cpp" />
+    <ClCompile Include="WaterEnvironment.cpp" />
     <ClCompile Include="WiFiCommunication.cpp" />
     <ClCompile Include="YandexNavigationAdapter.cpp" />
     <ClCompile Include="YandexNavigationSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AirEnvironment.h" />
     <ClInclude Include="Battery.h" />
     <ClInclude Include="CentralController.h" />
     <ClInclude Include="CombustionEngine.h" />
@@ -176,12 +181,14 @@
     <ClInclude Include="FuelCell.h" />
     <ClInclude Include="FuelType.h" />
     <ClInclude Include="GPSNavigation.h" />
+    <ClInclude Include="GroundEnvironment.h" />
     <ClInclude Include="GroundRobot.h" />
     <ClInclude Include="HybridEngine.h" />
     <ClInclude Include="IAggregate.h" />
     <ClInclude Include="ICommunication.h" />
     <ClInclude Include="IController.h" />
     <ClInclude Include="IEngine.h" />
+    <ClInclude Include="IEnvironment.h" />
     <ClInclude Include="INavigation.h" />
     <ClInclude Include="IPowerSource.h" />
     <ClInclude Include="IRobot.h" />
@@ -194,6 +201,7 @@
     <ClInclude Include="ProxyIterator.h" />
     <ClInclude Include="RobotGroup.h" />
     <ClInclude Include="VisionNavigation.h" />
+    <ClInclude Include="WaterEnvironment.h" />
     <ClInclude Include="WiFiCommunication.h" />
     <ClInclude Include="YandexNavigationAdapter.h" />
     <ClInclude Include="YandexNavigationSystem.h" />

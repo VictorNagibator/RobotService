@@ -12,7 +12,8 @@ void VisionNavigation::navigate(const std::string& destination)
 {
     std::cout << "Компьютерное зрение: разрешение камеры " << resolution
         << " и " << frameRate
-        << " FPS, пытаюсь доехать до \"" << destination << "\".\n";
+        << " FPS, пытаюсь доехать до \"" << destination << "\"."
+        << "Возможны неточности, коээфициент точности навигации: " << environment->getNavigationAccuracyFactor() << "\n";
 }
 
 void VisionNavigation::updatePosition(double newX, double newY)
@@ -23,5 +24,6 @@ void VisionNavigation::updatePosition(double newX, double newY)
 
 void VisionNavigation::adjustRoute() 
 {
-    std::cout << "Компьютерное зрение: анализирую ситуацию через камеры...\n";
+    std::cout << "Компьютерное зрение: анализирую ситуацию через камеры в среде: " 
+        << environment->getEnvironmentName() << "...\n";
 }

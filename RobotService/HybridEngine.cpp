@@ -5,7 +5,9 @@ void HybridEngine::start() {
     currentRPM = RPMonInitial;
     std::cout << "Гибридный двигатель " << engineName
         << " заводится. (Обороты: " << currentRPM
-        << " / " << maxRPM << ")\n";
+        << " / " << maxRPM << "; " 
+        << "сопротивление среды: " << environment->getResistance()
+        << ").\n";
 }
 
 void HybridEngine::stop() {
