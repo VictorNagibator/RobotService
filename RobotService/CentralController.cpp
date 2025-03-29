@@ -47,3 +47,8 @@ void CentralController::removeRobot(IRobot* robot)
 {
 	robots->remove(robot);
 }
+
+Iterator<IRobot*>* CentralController::getRobots()
+{
+	return robots->begin();
+}

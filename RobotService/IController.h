@@ -1,5 +1,6 @@
 #pragma once
 #include "IRobot.h"
+#include "Iterator.h"
 
 //Интерфейс центрального контроллера
 class IController {
@@ -12,4 +13,6 @@ public:
 	virtual void removeRobot(IRobot* robot) = 0;
     virtual void dispatchDelivery(IRobot* robot, const std::string& destination) = 0;
     virtual void monitorRobots() = 0;
+
+    virtual Iterator<IRobot*>* getRobots() = 0;
 };

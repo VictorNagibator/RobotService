@@ -14,4 +14,6 @@ public:
 	void removeRobot(IRobot* robot) override;
     void dispatchDelivery(IRobot* robot, const std::string& destination) override;
     void monitorRobots() override;
+
+	Iterator<IRobot*>* getRobots() override;
 };

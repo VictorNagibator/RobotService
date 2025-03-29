@@ -4,11 +4,9 @@ void GroundRobot::startDelivery(const std::string& destination)
 {
     try
     {
-        engine->start();
-        powerSource->consume(30); //Для примера тратим какое-то количество топлива или энергии
         std::cout << "Наземный робот " << robotID << " (" << modelName
             << ") начинает доставку до " << destination << ".\n";
-        navigation->navigate(destination);
+        moveTo(destination);
         communication->sendData("Наземный робот: начал доставку.");
     }
     catch (const std::exception& e)
@@ -32,4 +30,11 @@ void GroundRobot::checkStatus()
     std::cout << "Наземный робот " << robotID
         << ": заряд " << powerSource->getCharge()
         << "%.\n";
+}
+
+void GroundRobot::moveTo(const std::string& destination)
+{
+    engine->start();
+    powerSource->consume(30); //Для примера тратим какое-то количество топлива или энергии
+	navigation->navigate(destination);
 }

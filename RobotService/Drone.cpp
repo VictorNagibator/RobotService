@@ -4,11 +4,9 @@ void Drone::startDelivery(const std::string& destination)
 {
     try
     {
-        engine->start();
-        powerSource->consume(30); //Для примера тратим какое-то количество топлива или энергии
         std::cout << "Дрон " << robotID << " (" << modelName
             << ") взлетает и начинает доставку до " << destination << ".\n";
-        navigation->navigate(destination);
+        moveTo(destination);
         communication->sendData("Дрон: начал доставку.");
     }
     catch (const std::exception& e)
@@ -32,4 +30,11 @@ void Drone::checkStatus()
     std::cout << "Дрон " << robotID
         << ": заряд " << powerSource->getCharge()
         << "%.\n";
+}
+
+void Drone::moveTo(const std::string& destination)
+{
+    engine->start();
+    powerSource->consume(30); //Для примера тратим какое-то количество топлива или энергии
+	navigation->navigate(destination);
 }

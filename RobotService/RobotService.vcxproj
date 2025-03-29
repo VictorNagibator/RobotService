@@ -161,6 +161,7 @@
     <ClCompile Include="ProxyEngine.cpp" />
     <ClCompile Include="ProxyIterator.cpp" />
     <ClCompile Include="RobotGroup.cpp" />
+    <ClCompile Include="RobotManager.cpp" />
     <ClCompile Include="RobotService.cpp" />
     <ClCompile Include="VisionNavigation.cpp" />
     <ClCompile Include="WaterEnvironment.cpp" />
@@ -204,6 +205,7 @@
     <ClInclude Include="ProxyEngine.h" />
     <ClInclude Include="ProxyIterator.h" />
     <ClInclude Include="RobotGroup.h" />
+    <ClInclude Include="RobotManager.h" />
     <ClInclude Include="VisionNavigation.h" />
     <ClInclude Include="WaterEnvironment.h" />
     <ClInclude Include="WiFiCommunication.h" />
