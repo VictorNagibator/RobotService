@@ -8,8 +8,10 @@ RobotManager::RobotManager(IController* ctrl)
 
 void RobotManager::returnAllRobotsToBase()
 {
-    std::cout << "[Менджер роботами] Возвращаем всех роботов на базу: " << baseLocation << "\n";
-    ProxyIterator<IRobot*> it(controller->getRobots());
+    std::cout << "[Менеджер роботами] Возвращаем всех роботов на базу: " << baseLocation << "\n";
+    auto& collection = controller->getRobots();
+
+    ProxyIterator<IRobot*> it(collection.begin());
     while (it.hasNext()) {
         IRobot* robot = *(it.next());
         robot->stopDelivery();
@@ -20,8 +22,10 @@ void RobotManager::returnAllRobotsToBase()
 
 void RobotManager::emergencyStopAllRobots()
 {
-    std::cout << "[Менджер роботами] Аварийная остановка всех роботов.\n";
-    ProxyIterator<IRobot*> it(controller->getRobots());
+    std::cout << "[Менеджер роботами] Аварийная остановка всех роботов.\n";
+    auto& collection = controller->getRobots();
+
+    ProxyIterator<IRobot*> it(collection.begin());
     while (it.hasNext()) {
         IRobot* robot = *(it.next());
         robot->stopDelivery();
@@ -31,22 +35,41 @@ void RobotManager::emergencyStopAllRobots()
 
 void RobotManager::updateRoutesForAll(const std::string& newRoute) 
 {
-    std::cout << "[Менджер роботами] Обновление маршрутов для всех роботов: " << newRoute << "\n";
-    ProxyIterator<IRobot*> it(controller->getRobots());
+    std::cout << "[Менеджер роботами] Обновление маршрутов для всех роботов: " << newRoute << "\n";
+    auto& collection = controller->getRobots();
+
+    ProxyIterator<IRobot*> it(collection.begin());
     while (it.hasNext()) {
         IRobot* robot = *(it.next());
         robot->startDelivery(newRoute);
     }
 }
 
-void RobotManager::sendLowBatteryRobotsToCharge()
+void RobotManager::sendLowBatteryRobotsToCharge(double minBatteryLevel = 20.0)
 {
-    std::cout << "[Менджер роботами] Отправка роботов с низким зарядом на подзарядку.\n";
-    ProxyIterator<IRobot*> it(controller->getRobots());
+    std::cout << "[Менеджер роботами] Отправка роботов с низким зарядом на подзарядку.\n";
+    auto& collection = controller->getRobots();
+
+    ProxyIterator<IRobot*> it(collection.begin());
     while (it.hasNext()) {
         IRobot* robot = *(it.next());
-        if (robot->getPowerSource().getCharge() < lowBatteryThreshold) {
+        if (robot->getPowerSource().getCharge() < minBatteryLevel) {
 			robot->moveTo(chargeLocation);
         }
     }
+}
+
+int RobotManager::getSuitableRobotsCount() const
+{
+    auto& expert = controller->getRobotExpert();
+    auto& collection = controller->getRobots();
+    //С помощью эксперта получаем роботов, способных доставлять заказы
+    auto suitableCollection = expert.filterSuitableRobots(controller->getRobots());
+
+    int count = 0;
+    ProxyIterator<IRobot*> it(suitableCollection.begin());
+    while (it.hasNext()) {
+        count++; //Считаем количество хороших роботов
+    }
+    return count;
 }

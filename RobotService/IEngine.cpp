@@ -8,7 +8,7 @@ IEngine::IEngine(const std::string& name, int maxRPM, int temperatureThreshold, 
 	this->environment = environment;
 }
 
-void IEngine::setRPM(int newRPM)
+void IEngine::setRPM(int newRPM) 
 { 
     //Меняем температуру в зависимости от того, повышаем или понижаем обороты
     if (newRPM > currentRPM) currentTemperature += temperatureDifference;
@@ -18,7 +18,7 @@ void IEngine::setRPM(int newRPM)
     currentRPM = (newRPM <= maxRPM) ? newRPM : maxRPM;
 }
 
-int IEngine::getRPM()
+int IEngine::getRPM() const
 { 
     return currentRPM; 
 }
@@ -28,22 +28,22 @@ void IEngine::setTemperature(int newTemperature)
     this->currentTemperature = newTemperature;
 }
 
-int IEngine::getTemperature()
+int IEngine::getTemperature() const
 {
     return currentTemperature;
 }
 
-std::string IEngine::getName()
+std::string IEngine::getName() const
 {
     return engineName;
 }
 
-int IEngine::getMaxRPM() 
+int IEngine::getMaxRPM() const
 {
     return maxRPM;
 }
 
-int IEngine::getTemperatureThreshold()
+int IEngine::getTemperatureThreshold() const
 {
     return temperatureThreshold;
 }

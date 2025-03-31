@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AirEnvironment.cpp" />
+    <ClCompile Include="BasicRobotExpert.cpp" />
     <ClCompile Include="Battery.cpp" />
     <ClCompile Include="CentralController.cpp" />
     <ClCompile Include="CombustionEngine.cpp" />
@@ -151,6 +152,7 @@
     <ClCompile Include="INavigation.cpp" />
     <ClCompile Include="IPowerSource.cpp" />
     <ClCompile Include="IRobot.cpp" />
+    <ClCompile Include="IRobotExpert.cpp" />
     <ClCompile Include="Iterator.cpp" />
     <ClCompile Include="LidarNavigation.cpp" />
     <ClCompile Include="LTECommunication.cpp" />
@@ -171,6 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AirEnvironment.h" />
+    <ClInclude Include="BasicRobotExpert.h" />
     <ClInclude Include="Battery.h" />
     <ClInclude Include="CentralController.h" />
     <ClInclude Include="CombustionEngine.h" />
@@ -195,6 +198,7 @@
     <ClInclude Include="INavigation.h" />
     <ClInclude Include="IPowerSource.h" />
     <ClInclude Include="IRobot.h" />
+    <ClInclude Include="IRobotExpert.h" />
     <ClInclude Include="Iterator.h" />
     <ClInclude Include="LidarNavigation.h" />
     <ClInclude Include="LTECommunication.h" />

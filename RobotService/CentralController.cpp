@@ -11,7 +11,6 @@ void CentralController::dispatchDelivery(IRobot* robot, const std::string& desti
 {
 	//ћожно назначать доставку только зарегистрированным роботам
 	bool isRobotInCollection = false;
-
     //ѕолучаем прокси итератор на коллекцию роботов
     auto it = ProxyIterator<IRobot*>(robots->begin());
     while (it.hasNext()) {
@@ -20,8 +19,13 @@ void CentralController::dispatchDelivery(IRobot* robot, const std::string& desti
             break;
         }
     }
-		
     if (!isRobotInCollection) throw std::invalid_argument("–обот не зарегистрирован в системе!");
+
+	//“еперь используем эксперта дл€ анализа готовности робота
+	if (!expert->isRobotSuitable(robot)) {
+		std::cout << controllerName << ": робот не готов к выполнению заказа.\n";
+		return;
+	}
 
     std::cout << controllerName << ": назначение доставки до " << destination << "\n";
     robot->startDelivery(destination);
@@ -31,7 +35,7 @@ void CentralController::dispatchDelivery(IRobot* robot, const std::string& desti
     robot->stopDelivery();
 }
 
-void CentralController::monitorRobots()
+void CentralController::monitorRobots() const
 {
     std::cout << controllerName << ": провер€ем состо€ние роботов...\n";
     //ѕолучаем прокси итератор на коллекцию роботов дл€ автоматического удалени€
@@ -48,7 +52,7 @@ void CentralController::removeRobot(IRobot* robot)
 	robots->remove(robot);
 }
 
-Iterator<IRobot*>* CentralController::getRobots()
+const IAggregate<IRobot*>& CentralController::getRobots() const
 {
-	return robots->begin();
+    return *robots;
 }

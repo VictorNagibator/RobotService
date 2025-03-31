@@ -20,13 +20,13 @@ public:
     virtual void start() = 0;
     virtual void stop() = 0;
     virtual void setRPM(int newRPM);
-    virtual int getRPM();
+    virtual int getRPM() const;
     virtual void setTemperature(int newTemperature);
-    virtual int getTemperature();
+    virtual int getTemperature() const;
 
-    virtual std::string getName();
-    virtual int getMaxRPM();
-    virtual int getTemperatureThreshold();
+    virtual std::string getName() const;
+    virtual int getMaxRPM() const;
+    virtual int getTemperatureThreshold() const;
 
     //Можно поменять среду
     virtual void setEnvironment(IEnvironment* env) = 0;

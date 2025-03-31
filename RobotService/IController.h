@@ -1,18 +1,21 @@
 #pragma once
 #include "IRobot.h"
-#include "Iterator.h"
+#include "IAggregate.h"
+#include "IRobotExpert.h"
 
 //Интерфейс центрального контроллера
 class IController {
 protected:
     std::string controllerName;
+	IRobotExpert* expert;
 public:
-	IController(const std::string& name) : controllerName(name) {};
+	IController(const std::string& name, IRobotExpert* exp) : controllerName(name), expert(exp) {};
 
     virtual void addRobot(IRobot* robot) = 0;
 	virtual void removeRobot(IRobot* robot) = 0;
     virtual void dispatchDelivery(IRobot* robot, const std::string& destination) = 0;
-    virtual void monitorRobots() = 0;
+    virtual void monitorRobots() const = 0;
 
-    virtual Iterator<IRobot*>* getRobots() = 0;
+    virtual const IAggregate<IRobot*>& getRobots() const = 0;
+    virtual const IRobotExpert& getRobotExpert() const;
 };

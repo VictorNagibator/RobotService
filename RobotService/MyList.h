@@ -53,13 +53,13 @@ public:
 	//“е самые методы, из-за которых может произойти утечка пам€ти
 
 	//¬озвращает итератор на начало списка
-	Iterator<T>* begin()
+	Iterator<T>* begin() const
 	{
 		return new MyListIterator<T>(root);
 	}
 
 	//¬озвращает итератор на конец списка
-	Iterator<T>* end()
+	Iterator<T>* end() const
 	{
 		return new MyListIterator<T>(nullptr);
 	}
