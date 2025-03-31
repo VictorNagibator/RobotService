@@ -1,8 +1,9 @@
 #include "VisionNavigation.h"
 #include <iostream>
 
-VisionNavigation::VisionNavigation(const std::string& resolution, int frameRate, double startX, double startY)
-    : INavigation(startX, startY)
+VisionNavigation::VisionNavigation(IEnvironment* environment, 
+    const std::string& resolution, int frameRate, double startX, double startY)
+    : INavigation(environment, startX, startY)
 {
     this->resolution = resolution;
     this->frameRate = frameRate;

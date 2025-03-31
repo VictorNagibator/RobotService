@@ -6,7 +6,7 @@ class WiFiCommunication : public ICommunication {
 private:
     int channel; //Номер канала WiFi
 public:
-    WiFiCommunication(int signalStrength, int channel);
+    WiFiCommunication(int signalStrength, int channel, IEnvironment* environment);
 
     void establishConnection() override;
     void sendData(const std::string& data) override;

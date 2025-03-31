@@ -1,7 +1,8 @@
 #include "WiFiCommunication.h"
 #include <iostream>
 
-WiFiCommunication::WiFiCommunication(int signalStrength, int channel) : ICommunication(signalStrength)
+WiFiCommunication::WiFiCommunication(int signalStrength, int channel, IEnvironment* environment) 
+    : ICommunication(signalStrength, environment)
 {
     this->channel = channel;
 }

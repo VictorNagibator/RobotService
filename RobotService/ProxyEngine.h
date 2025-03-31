@@ -11,11 +11,11 @@ public:
     void start() override;
     void stop() override;
     void setRPM(int newRPM) override;
-	int getRPM() override;
+	int getRPM() const override;
 	void setTemperature(int newTemperature) override;
-	int getTemperature() override;
+	int getTemperature() const override;
 
-	std::string getName() override;
-	int getMaxRPM() override;
-	int getTemperatureThreshold() override;
+	std::string getName() const override;
+	int getMaxRPM() const override;
+	int getTemperatureThreshold() const override;
 };

@@ -9,7 +9,7 @@ protected:
 
     double x, y; //Координаты робота
 public:
-    INavigation(double startX = 0, double startY = 0, IEnvironment* environment);
+    INavigation(IEnvironment* environment, double startX = 0, double startY = 0);
 
     //Навигация по маршруту к заданной точке
     virtual void navigate(const std::string& destination) = 0;

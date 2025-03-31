@@ -2,7 +2,7 @@
 #include <iostream>
 
 ProxyEngine::ProxyEngine(IEngine* engine) 
-	: IEngine(engine->getName(), engine->getMaxRPM(), engine->getTemperatureThreshold())
+	: IEngine(engine->getName(), engine->getMaxRPM(), engine->getTemperatureThreshold(), engine->getEnvironment())
 {
 	realEngine = engine;
 }
@@ -38,7 +38,7 @@ void ProxyEngine::setRPM(int newRPM)
     }
 }
 
-int ProxyEngine::getRPM()
+int ProxyEngine::getRPM() const
 {
 	return realEngine->getRPM();
 }
@@ -48,22 +48,22 @@ void ProxyEngine::setTemperature(int newTemperature)
 	realEngine->setTemperature(newTemperature);
 }
 
-int ProxyEngine::getTemperature()
+int ProxyEngine::getTemperature() const
 {
 	return realEngine->getTemperature();
 }
 
-std::string ProxyEngine::getName()
+std::string ProxyEngine::getName() const
 {
 	return realEngine->getName();
 }
 
-int ProxyEngine::getMaxRPM()
+int ProxyEngine::getMaxRPM() const
 {
 	return realEngine->getMaxRPM();
 }
 
-int ProxyEngine::getTemperatureThreshold()
+int ProxyEngine::getTemperatureThreshold() const
 {
 	return realEngine->getTemperatureThreshold();
 }

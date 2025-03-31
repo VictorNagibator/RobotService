@@ -1,7 +1,8 @@
 #include "LTECommunication.h"
 #include <iostream>
 
-LTECommunication::LTECommunication(int signalStrength, int latency) : ICommunication(signalStrength)
+LTECommunication::LTECommunication(int signalStrength, int latency, IEnvironment* environment) 
+    : ICommunication(signalStrength, environment)
 {
     this->latency = latency;
 }

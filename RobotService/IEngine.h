@@ -27,6 +27,7 @@ public:
     virtual std::string getName() const;
     virtual int getMaxRPM() const;
     virtual int getTemperatureThreshold() const;
+    IEnvironment* getEnvironment() const;
 
     //Можно поменять среду
     virtual void setEnvironment(IEnvironment* env) = 0;

@@ -15,3 +15,8 @@ void ICommunication::setEnvironment(IEnvironment* env)
 {
 	environment = env;
 }
+
+IEnvironment* ICommunication::getEnvironment() const
+{
+	return environment;
+}

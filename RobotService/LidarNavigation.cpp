@@ -1,8 +1,9 @@
 #include "LidarNavigation.h"
 #include <iostream>
 
-LidarNavigation::LidarNavigation(int detectionRange, double laserFrequency, double startX, double startY)
-    : INavigation(startX, startY)
+LidarNavigation::LidarNavigation(IEnvironment* environment, int detectionRange, 
+    double laserFrequency, double startX, double startY)
+    : INavigation(environment, startX, startY)
 {
     this->detectionRange = detectionRange;
     this->laserFrequency = laserFrequency;

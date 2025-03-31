@@ -52,3 +52,8 @@ void IEngine::setEnvironment(IEnvironment* env)
 {
 	environment = env;
 }
+
+IEnvironment* IEngine::getEnvironment() const
+{
+    return environment;
+}

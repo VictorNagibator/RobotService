@@ -19,6 +19,7 @@ public:
     
 	//Получение силы сигнала
 	int getSignalStrength() const;
+    IEnvironment* getEnvironment() const;
 
 	//Можно поменять среду (например, робот попал под ливень или поменял способ передвижения)
 	virtual void setEnvironment(IEnvironment* env) = 0;

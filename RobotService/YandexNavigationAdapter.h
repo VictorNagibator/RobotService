@@ -9,8 +9,8 @@ private:
     //Храним адаптируемый объект
     YandexNavigationSystem originalNav; 
 public:
-    YandexNavigationAdapter(double startX, double startY)
-        : INavigation(startX, startY) {}
+    YandexNavigationAdapter(IEnvironment* environment, double startX, double startY)
+        : INavigation(environment, startX, startY) {}
 
     void navigate(const std::string& destination) override;
     void updatePosition(double newX, double newY) override;

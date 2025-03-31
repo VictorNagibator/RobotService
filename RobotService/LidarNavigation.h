@@ -7,7 +7,8 @@ private:
     int detectionRange; //Диапазон обнаружения (в метрах)
     double laserFrequency; //Частота работы лазера (в Гц)
 public:
-    LidarNavigation(int detectionRange, double laserFrequency, double startX = 0, double startY = 0);
+    LidarNavigation(IEnvironment* environment, int detectionRange, 
+        double laserFrequency, double startX = 0, double startY = 0);
 
     void navigate(const std::string& destination) override;
     void updatePosition(double newX, double newY) override;

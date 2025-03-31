@@ -45,7 +45,7 @@ void RobotManager::updateRoutesForAll(const std::string& newRoute)
     }
 }
 
-void RobotManager::sendLowBatteryRobotsToCharge(double minBatteryLevel = 20.0)
+void RobotManager::sendLowBatteryRobotsToCharge(double minBatteryLevel)
 {
     std::cout << "[Менеджер роботами] Отправка роботов с низким зарядом на подзарядку.\n";
     auto& collection = controller->getRobots();

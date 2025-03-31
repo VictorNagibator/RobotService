@@ -20,101 +20,95 @@
 #include "CommunicationPrinterDecorator.h"
 #include "RobotGroup.h"
 #include "HybridEngine.h"
+#include "GroundEnvironment.h"
+#include "AirEnvironment.h"
+#include "WaterEnvironment.h"
 
 int main() {
-    //Исправляем кодировку консоли для корректного отображения кириллицы
-    SetConsoleCP(1251);
-    SetConsoleOutputCP(1251);
+    ////Исправляем кодировку консоли для корректного отображения кириллицы
+    //SetConsoleCP(1251);
+    //SetConsoleOutputCP(1251);
 
-    std::cout << "=== Демонстрация адаптера ===\n";
-	IEngine* grElectricMotor = new ElectricMotor("EM-GR-01", 500, 75);
-	INavigation* grNavigation = new YandexNavigationAdapter(1, 1); //Создаем адаптер
-	ICommunication* grWiFi = new WiFiCommunication(45, 6);
-	IPowerSource* grBattery = new Battery(3000);
-    //Используем его для робота!
-	GroundRobot robot1 = GroundRobot(1, "Model-X", grElectricMotor, grNavigation, grWiFi, grBattery);
-    //Продемонстрируем работу адаптера через начало доставки
-	grBattery->recharge();
-	robot1.startDelivery("Улица Ленина, 5");
+    //// --- 1. Bridge: Создаем среду и передаем ее в компоненты робота ---
+    //// Создаем среду для наземного робота
+    //IEnvironment* groundEnv = new GroundEnvironment();
+    //// Создаем среду для воздушного робота (если понадобится)
+    //IEnvironment* airEnv = new AirEnvironment();
+    //// Создаем среду для водного робота (если понадобится)
+    //IEnvironment* waterEnv = new WaterEnvironment();
 
-    std::cout << "\n=== Демонстрация декораторов для ICommunication в разных порядках ===\n";
-    //Берём коммуникацию через WiFi, созданную выше
-    //Порядок 1
-    ICommunication* comm1 = new CommunicationEncryptorDecorator(grWiFi);
-    ICommunication* comm2 = new CommunicationTimestampDecorator(comm1);
+    //// --- 2. Flyweight: Создаем фабрику сегментов карты ---
+    //MapSegmentFactory* segmentFactory = new MapSegmentFactory();
 
-    std::cout << "\n--- Порядок 1: Метка времени -> Шифрование ---\n";
-    //Создадим ещё одного робота, но с другим средством коммуникации
-    GroundRobot robot2 = GroundRobot(2, "Model-X-DECORATED", grElectricMotor, grNavigation, comm2, grBattery);
-    robot2.startDelivery("Улица Молодежная, 61");
+    //// Создаем навигационную систему с использованием фабрики сегментов и выбранной среды (Ground)
+    //// GPSNavigation принимает IEnvironment* и MapSegmentFactory*
+    //INavigation* navigation = new GPSNavigation(groundEnv, segmentFactory);
 
-    //Порядок 2
-    ICommunication* gr4G = new LTECommunication(45, 50);
-    ICommunication* comm3 = new CommunicationPrinterDecorator(gr4G);
-    ICommunication* comm4 = new CommunicationTimestampDecorator(comm3);
-    ICommunication* comm5 = new CommunicationEncryptorDecorator(comm4);
+    //// --- 3. Создаем другие компоненты (двигатель, связь, источник питания) ---
+    //IEngine* engine = new ElectricMotor("EM-Ground-01", groundEnv);
+    //ICommunication* communication = new WiFiCommunication(groundEnv);
+    //IPowerSource* battery = new Battery(3000);
 
-    std::cout << "\n--- Порядок 2: Шифрование -> Метка времени -> Вывод на экран ---\n";
-    //Третий робот
-    GroundRobot robot3 = GroundRobot(3, "Model-X-DECORATED-v 2.0", grElectricMotor, grNavigation, comm5, grBattery);
-    robot3.startDelivery("Улица Молодежная, 62");
+    //// --- 4. Создаем роботов с использованием Bridge ---
+    //// Здесь мы используем SimpleRobot, который принимает все необходимые компоненты
+    //// Предполагается, что SimpleRobot реализует IRobot и использует переданные компоненты
+    //IRobot* robot1 = new SimpleRobot(1, "Model-A", 50.0, 70.0, "OK", "OK", engine, navigation, communication, battery);
+    //// Для разнообразия создадим еще роботов с разными параметрами:
+    //IRobot* robot2 = new SimpleRobot(2, "Model-B", 15.0, 95.0, "OK", "OK", engine, navigation, communication, battery);
+    //IRobot* robot3 = new SimpleRobot(3, "Model-C", 80.0, 65.0, "Warning", "OK", engine, navigation, communication, battery);
 
-    std::cout << "\n=== Демонстрация композита (RobotGroup) ===\n";
-    //Возьмем двух ранее созданных роботов и создаем группу роботов
-	IAggregate<IRobot*>* groupAggregate1 = new MyList<IRobot*>; //Создаем агрегат для группы
-    RobotGroup* group1 = new RobotGroup(groupAggregate1);
-    group1->addRobot(&robot2);
-    group1->addRobot(&robot3);
+    //// --- 5. Агрегат роботов (Flyweight для роботов не используется, но агрегат позволяет применять итераторы) ---
+    //IAggregate<IRobot*>* robotAggregate = new MyList<IRobot*>;
+    //robotAggregate->push(robot1);
+    //robotAggregate->push(robot2);
+    //robotAggregate->push(robot3);
 
-    //Создаем вторую группу и включаем в неё ещё одного робота и первую группу 
-    //(Демонстрация вложенных групп)
-    IAggregate<IRobot*>* groupAggregate2 = new MyList<IRobot*>;
-    RobotGroup* group2 = new RobotGroup(groupAggregate2);
-    group2->addRobot(&robot1);
-    group2->addRobot(group1);
+    //// --- 6. Information Expert: создаем эксперта по состоянию роботов ---
+    //IRobotExpert* expert = new BasicRobotExpert(); // Можно задать свои параметры, если нужно
 
-    //Выполняем доставку для всей группы 
-	std::cout << "\n\tДоставка для группы роботов\n";
-    group2->startDelivery("Склад №1");
-    std::cout << "\n\tКонец доставки для группы роботов\n";
-    group2->stopDelivery();
-    std::cout << "\n\tПроверка состояния для группы роботов\n";
-    group2->checkStatus();
+    //// --- 7. CentralController: создаем контроллер, который использует агрегат и эксперта ---
+    //CentralController* controller = new CentralController("MainController", robotAggregate, expert);
 
-    std::cout << "\n=== Демонстрация итератора отдельно и в Центральном контроллере ===\n";
-    //Создаем агрегат роботов с помощью MyList
-    MyList<IRobot*>* robotList = new MyList<IRobot*>;
-    robotList->push(&robot1);
-    robotList->push(&robot2);
-    robotList->push(&robot3);
+    //// --- 8. Facade: создаем RobotManager, который использует CentralController для управления роботами ---
+    //RobotManager* manager = new RobotManager(controller);
 
-    std::cout << "Обход списка роботов через итератор:\n";
-    ProxyIterator<IRobot*> proxyIt(robotList->begin()); //Используем прокси, который сам чистит за собой память
-    while (proxyIt.hasNext()) {
-        IRobot* robot = *(proxyIt.next());
-        robot->checkStatus(); //Проверяем состояние роботов, например
-    }
+    //// Демонстрируем работу системы через фасад:
+    //std::cout << "=== ФАСАД: Возврат всех роботов на базу ===\n";
+    //manager->returnAllRobotsToBase();
 
-    //Создаем центральный контроллер, используя агрегат 
-    CentralController controller("MainController", robotList);
-    std::cout << "\nМониторинг роботов через CentralController:\n";
-    controller.monitorRobots();
+    //std::cout << "\n=== ФАСАД: Аварийная остановка всех роботов ===\n";
+    //manager->emergencyStopAllRobots();
 
-    delete robotList;
-    delete group2;
-	delete group1;
-    delete groupAggregate2;
-	delete groupAggregate1;
-	delete comm5;
-	delete comm4;
-	delete comm3;
-	delete comm2;
-	delete comm1;
-    delete grBattery;
-    delete grWiFi;
-    delete gr4G;
-	delete grNavigation;
-	delete grElectricMotor;
+    //std::cout << "\n=== ФАСАД: Обновление маршрутов для всех роботов ===\n";
+    //manager->updateRoutesForAll("Новый маршрут: ул. Ленина, 5");
 
-    return 0;
+    //std::cout << "\n=== ФАСАД: Отправка роботов с низким зарядом на подзарядку ===\n";
+    //manager->sendLowBatteryRobotsToCharge();
+
+    //std::cout << "\n=== Information Expert: Анализ каждого робота ===\n";
+    //// Выводим рекомендации для каждого робота
+    //controller->monitorRobots();  // обычный мониторинг
+    //// Анализ состояния каждого робота
+    //// (Методы эксперта вызываются внутри контроллера через evaluate/dispatchOrderIfSuitable, например)
+    //controller->dispatchOrderIfSuitable("Улица Ленина, 5", 0.3);
+
+    //// --- Очистка памяти ---
+    //// Удаляем контроллер, агрегат, эксперта, фабрику сегментов и среды.
+    //delete controller; // предположим, что он не владеет роботами (их удаляем отдельно)
+    //delete robotAggregate;
+    //delete expert;
+    //delete segmentFactory;
+    //delete groundEnv;
+    //delete airEnv;
+    //delete waterEnv;
+
+    //// Удаляем роботов, если агрегат не владеет ими
+    //delete robot1;
+    //delete robot2;
+    //delete robot3;
+
+    //// Компоненты (двигатель, навигация, связь, источник питания) здесь не удаляются отдельно,
+    //// так как они, как правило, передаются в робота и удаляются при удалении робота.
+
+    //return 0;
 }

@@ -1,7 +1,7 @@
 #include "CommunicationDecorator.h"
 
 CommunicationDecorator::CommunicationDecorator(ICommunication* comm)
-	: ICommunication(comm->getSignalStrength())
+	: ICommunication(comm->getSignalStrength(), comm->getEnvironment())
 {
 	wrappedComm = comm;
 }
