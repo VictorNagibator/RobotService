@@ -36,12 +36,14 @@ void GPSNavigation::navigate(const std::string& destination)
 
 void GPSNavigation::updatePosition(double newX, double newY)
 {
+    environment->interact();
     updatePosition(newX, newY); //Обновляем координаты через стандартную реализацию
     std::cout << "GPS: обновлена позиция (" << x << ", " << y << ").\n";
 }
 
 void GPSNavigation::adjustRoute()
 {
+    environment->interact();
     std::cout << "GPS: пересчёт маршрута в среде: " 
         << environment->getEnvironmentName() << "...\n";
 }

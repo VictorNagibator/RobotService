@@ -9,12 +9,14 @@ LTECommunication::LTECommunication(int signalStrength, int latency, IEnvironment
 
 void LTECommunication::establishConnection() 
 {
+    environment->interact();
     std::cout << "4G (Latency: " 
         << latency << " мс) подключился к центральному управлению.\n";
 }
 
 void LTECommunication::sendData(const std::string& data)
 {
+    environment->interact();
     std::cout << "4G отправляет данные: " << data 
         << ". Коэффициент затухания сигнала: " << environment->getCommunicationAttenuation() << "\n";
 }

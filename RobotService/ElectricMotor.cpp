@@ -3,6 +3,7 @@
 
 void ElectricMotor::start() {
     currentRPM = RPMonInitial; //Ёлектродвигатель мгновенно достигает высоких оборотов
+    environment->interact();
     std::cout << "Ёлектромотор " << engineName
         << " заводитс€. (ќбороты: " << currentRPM
         << " / " << maxRPM << "; " 
@@ -12,5 +13,6 @@ void ElectricMotor::start() {
 
 void ElectricMotor::stop() {
     currentRPM = 0; //ќбороты обнул€ютс€ после того, как глушим двигатель
+    environment->interact();
     std::cout << "Ёлектромотор " << engineName << " останавливает работу.\n";
 }

@@ -11,6 +11,7 @@ VisionNavigation::VisionNavigation(IEnvironment* environment,
 
 void VisionNavigation::navigate(const std::string& destination) 
 {
+    environment->interact();
     std::cout << "Компьютерное зрение: разрешение камеры " << resolution
         << " и " << frameRate
         << " FPS, пытаюсь доехать до \"" << destination << "\"."
@@ -19,12 +20,14 @@ void VisionNavigation::navigate(const std::string& destination)
 
 void VisionNavigation::updatePosition(double newX, double newY)
 {
+    environment->interact();
     updatePosition(newX, newY);
     std::cout << "Компьютерное зрение: обновляю позицию (" << x << ", " << y << ").\n";
 }
 
 void VisionNavigation::adjustRoute() 
 {
+    environment->interact();
     std::cout << "Компьютерное зрение: анализирую ситуацию через камеры в среде: " 
         << environment->getEnvironmentName() << "...\n";
 }

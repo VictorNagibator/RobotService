@@ -1,4 +1,5 @@
 #include "GroundEnvironment.h"
+#include <iostream>
 
 //Возьмем все коэффициенты за 1 в качестве стандарта
 
@@ -20,4 +21,9 @@ double GroundEnvironment::getCommunicationAttenuation() const
 std::string GroundEnvironment::getEnvironmentName() const
 { 
 	return "Земля"; 
+}
+
+void GroundEnvironment::interact()
+{
+	std::cout << "Взаимодействую на поверхности..." << std::endl;
 }

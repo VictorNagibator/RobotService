@@ -1,4 +1,5 @@
 #include "WaterEnvironment.h"
+#include <iostream>
 
 double WaterEnvironment::getResistance() const 
 { 
@@ -18,4 +19,9 @@ double WaterEnvironment::getCommunicationAttenuation() const
 std::string WaterEnvironment::getEnvironmentName() const
 {
 	return "Вода";
+}
+
+void WaterEnvironment::interact()
+{
+	std::cout << "Взаимодействую в воде..." << std::endl;
 }

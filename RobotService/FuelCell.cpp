@@ -20,6 +20,6 @@ void FuelCell::consume(double amount) {
     //Не может быть отрицательного топлива в баке
     if (fuelLevel < amount) throw std::exception("Недостаточно топлива!");
     fuelLevel -= amount;
-
+    environment->interact();
     std::cout << "Топливо использовано. Текущий уровень: " << fuelLevel << " / " << capacity << ".\n";
 }

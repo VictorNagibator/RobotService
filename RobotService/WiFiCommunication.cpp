@@ -9,12 +9,14 @@ WiFiCommunication::WiFiCommunication(int signalStrength, int channel, IEnvironme
 
 void WiFiCommunication::establishConnection() 
 {
+    environment->interact();
     std::cout << "WiFi (Канал " << channel
         << ", Сигнал: " << signalStrength << " дБм) подключился к центральному управлению.\n";
 }
 
 void WiFiCommunication::sendData(const std::string& data) 
 {
+    environment->interact();
     std::cout << "WiFi (Канал " << channel << ") отправляет данные: " << data 
         << ". Коэффициент затухания сигнала: " << environment->getCommunicationAttenuation() << "\n";
 }

@@ -19,11 +19,13 @@ void LidarNavigation::navigate(const std::string& destination)
 
 void LidarNavigation::updatePosition(double newX, double newY)
 {
+    environment->interact();
     updatePosition(newX, newY);
     std::cout << "Лидар: обновлена позиция (" << x << ", " << y << ").\n";
 }
 
 void LidarNavigation::adjustRoute()
 {
+    environment->interact();
     std::cout << "Лидар: пытаюсь обнаружить и обойти препятствия в среде: " << environment->getEnvironmentName() << "...\n";
 }

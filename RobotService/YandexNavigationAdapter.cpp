@@ -4,11 +4,13 @@
 
 void YandexNavigationAdapter::navigate(const std::string& destination) 
 {
+    environment->interact();
     originalNav.navigateOnRoute(destination);
 }
 
 void YandexNavigationAdapter::updatePosition(double newX, double newY)
 {
+    environment->interact();
     x = newX;
     y = newY;
     originalNav.updateCoords(newX, newY);
@@ -16,5 +18,6 @@ void YandexNavigationAdapter::updatePosition(double newX, double newY)
 
 void YandexNavigationAdapter::adjustRoute() 
 {
+    environment->interact();
     originalNav.reAdjust();
 }

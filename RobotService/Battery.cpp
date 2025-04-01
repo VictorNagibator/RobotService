@@ -21,5 +21,6 @@ void Battery::consume(double usage) {
     if (currentCharge < usage) throw std::exception("Недостаточно энергии!");
 
 	currentCharge -= usage;
+    environment->interact(); //При потреблении энергии среда движения так или иначе влияет
     std::cout << "Батарея разряжается. Текущий заряд: " << getCharge() << "%\n";
 }

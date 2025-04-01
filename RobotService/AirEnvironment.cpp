@@ -1,4 +1,5 @@
 #include "AirEnvironment.h"
+#include <iostream>
 
 double AirEnvironment::getResistance() const 
 { 
@@ -18,4 +19,9 @@ double AirEnvironment::getCommunicationAttenuation() const
 std::string AirEnvironment::getEnvironmentName() const 
 { 
 	return "Воздух"; 
+}
+
+void AirEnvironment::interact()
+{
+	std::cout << "Взаимодействую с воздухом..." << std::endl;
 }

@@ -3,6 +3,7 @@
 
 void CombustionEngine::start() {
     currentRPM = RPMonInitial;
+    environment->interact();
     std::cout << "ƒвигатель внутреннего сгорани€ " << engineName
         << " заводитс€. (ќбороты: " << currentRPM
         << " / " << maxRPM << "; " 
@@ -12,5 +13,6 @@ void CombustionEngine::start() {
 
 void CombustionEngine::stop() {
     currentRPM = 0; //ќбороты обнул€ютс€ после того, как глушим двигатель
+    environment->interact();
     std::cout << "ƒвигатель внутреннего сгорани€ " << engineName << " останавливает работу.\n";
 }
