@@ -1,9 +1,8 @@
 #include "Battery.h"
 
-Battery::Battery(int capacity, IEnvironment* environment)
+Battery::Battery(int capacity, IEnvironment* environment) : IPowerSource(environment)
 {
     this->capacity = capacity;
-    this->environment = environment;
 }
 
 double Battery::getCharge() const 

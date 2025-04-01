@@ -1,10 +1,9 @@
 #include "FuelCell.h"
 
-FuelCell::FuelCell(FuelType fuelType, int capacity, IEnvironment* environment)
+FuelCell::FuelCell(FuelType fuelType, int capacity, IEnvironment* environment) : IPowerSource(environment)
 {
     this->fuelType = fuelType;
     this->capacity = capacity;
-    this->environment = environment;
 }
 
 double FuelCell::getCharge() const {
