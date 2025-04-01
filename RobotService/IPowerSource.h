@@ -7,6 +7,8 @@ class IPowerSource {
 protected:
     IEnvironment* environment;
 public:
+    IPowerSource(IEnvironment* env) : environment(env) {}
+
     //Возвращает текущий уровень заряда (в процентах)
     virtual double getCharge() const = 0;
 
@@ -16,6 +18,7 @@ public:
     //Трата заряда
     virtual void consume(double usage) = 0;
 
+    IEnvironment* getEnvironment() const;
     //Можно поменять среду
     virtual void setEnvironment(IEnvironment* env);
 };

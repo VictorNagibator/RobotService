@@ -11,6 +11,7 @@ public:
     //Коэффициент затухания сигнала для средств связи
     virtual double getCommunicationAttenuation() const = 0;
 
+    //Взаимодействие какое-то со средой
     virtual void interact() = 0;
 
     //Получить название самой среды

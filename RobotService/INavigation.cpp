@@ -17,3 +17,8 @@ void INavigation::setEnvironment(IEnvironment* env)
 {
 	environment = env;
 }
+
+IEnvironment* INavigation::getEnvironment() const
+{
+	return environment;
+}

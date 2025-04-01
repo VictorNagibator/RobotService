@@ -20,4 +20,5 @@ public:
 
     //Можно поменять среду
     virtual void setEnvironment(IEnvironment* env);
+    IEnvironment* getEnvironment() const;
 };
