@@ -8,7 +8,7 @@ private:
     double fuelLevel = 0; //Текущий уровень топлива
     int capacity; //Вместимость топливного бака
 public:
-    FuelCell(FuelType fuelType, int capacity);
+    FuelCell(FuelType fuelType, int capacity, IEnvironment* environment);
 
     //Возвращает текущий уровень топлива
     double getCharge() const override;
@@ -19,4 +19,3 @@ public:
     //Симуляция расхода топлива.
     void consume(double amount) override;
 };
-

@@ -18,12 +18,12 @@ void GPSNavigation::navigate(const std::string& destination)
 	//Получаем улицу и номер дома через разделение строки через запятую
     if (std::getline(iss, street, ',') && std::getline(iss, houseStr)) {
         street = StringHelper::deleteSpaces(street); //Обрезаем пробелы
-        houseStr = StringHelper::deleteSpaces(street);
+        houseStr = StringHelper::deleteSpaces(houseStr);
         int houseNumber = std::stoi(houseStr);
 
         //Получаем сегмент карты для данной улицы
         MapSegment* segment = factory.getSegment(street, houseNumber);
-        std::cout << "GPSNavigation: Маршрут рассчитан через сегмент:\n";
+        std::cout << "GPSNavigation: Маршрут рассчитан через сегмент: ";
         segment->printInfo();
         std::cout << "Дом " << houseNumber << " найден на сегменте "
             << "с точностью " << accuracy - environment->getNavigationAccuracyFactor() 
@@ -37,7 +37,7 @@ void GPSNavigation::navigate(const std::string& destination)
 void GPSNavigation::updatePosition(double newX, double newY)
 {
     updatePosition(newX, newY); //Обновляем координаты через стандартную реализацию
-    std::cout << "GPS: обновалена позиция (" << x << ", " << y << ").\n";
+    std::cout << "GPS: обновлена позиция (" << x << ", " << y << ").\n";
 }
 
 void GPSNavigation::adjustRoute()

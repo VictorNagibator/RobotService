@@ -142,7 +142,7 @@
     <ClCompile Include="FuelCell.cpp" />
     <ClCompile Include="GPSNavigation.cpp" />
     <ClCompile Include="GroundEnvironment.cpp" />
-    <ClCompile Include="GroundRobot.cpp" />
+    <ClCompile Include="SimpleRobot.cpp" />
     <ClCompile Include="HybridEngine.cpp" />
     <ClCompile Include="IAggregate.cpp" />
     <ClCompile Include="ICommunication.cpp" />
@@ -189,7 +189,7 @@
     <ClInclude Include="FuelType.h" />
     <ClInclude Include="GPSNavigation.h" />
     <ClInclude Include="GroundEnvironment.h" />
-    <ClInclude Include="GroundRobot.h" />
+    <ClInclude Include="SimpleRobot.h" />
     <ClInclude Include="HybridEngine.h" />
     <ClInclude Include="IAggregate.h" />
     <ClInclude Include="ICommunication.h" />

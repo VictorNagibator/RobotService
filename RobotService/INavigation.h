@@ -19,5 +19,5 @@ public:
     virtual void adjustRoute() = 0;
 
     //Можно поменять среду
-    virtual void setEnvironment(IEnvironment* env) = 0;
+    virtual void setEnvironment(IEnvironment* env);
 };

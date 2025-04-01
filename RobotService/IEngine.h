@@ -30,5 +30,5 @@ public:
     IEnvironment* getEnvironment() const;
 
     //Можно поменять среду
-    virtual void setEnvironment(IEnvironment* env) = 0;
+    virtual void setEnvironment(IEnvironment* env);
 };

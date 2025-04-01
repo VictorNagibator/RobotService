@@ -22,5 +22,5 @@ public:
     IEnvironment* getEnvironment() const;
 
 	//Можно поменять среду (например, робот попал под ливень или поменял способ передвижения)
-	virtual void setEnvironment(IEnvironment* env) = 0;
+	virtual void setEnvironment(IEnvironment* env);
 };

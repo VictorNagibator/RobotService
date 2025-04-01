@@ -6,7 +6,7 @@ private:
     int capacity; //®мкость батареи в мјч
     double currentCharge = 0; //“екущий зар€д в мјч
 public:
-    Battery(int capacity);
+    Battery(int capacity, IEnvironment* environment);
 
     //¬озвращает оставшийс€ зар€д в процентах.
     double getCharge() const override;
