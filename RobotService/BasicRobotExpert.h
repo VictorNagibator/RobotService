@@ -6,13 +6,18 @@ class BasicRobotExpert : public IRobotExpert {
 private:
     double maxSafeTemperatureForEngine = 90.0; //Максимальный порог температуры двигателя
 	double minBatteryLevel = 20.0; //Минимальный заряд батареи
+
+	//Максимальная температура для доставки (90% от максимальной; мы не хотим, чтобы робот во время доставки сломался)
+	const double maxTemperatureForDelivery = maxSafeTemperatureForEngine * 0.9; 
+	//Аналогично для заряда батареи
+	const double minBatteryLevelForDelivery = minBatteryLevel * 1.1;
 public:
-	BasicRobotExpert() {} //Можно оставить значения по умолчанию
-    BasicRobotExpert(double maxSafeTemperatureForEngine, double minBatteryLevel); //А можно задать свои
+	BasicRobotExpert(IController* ctrl) : IRobotExpert(ctrl) {} //Можно оставить значения по умолчанию
+	BasicRobotExpert(IController* ctrl, double maxSafeTemperatureForEngine, double minBatteryLevel); //А можно задать свои
 
-    //Сама проверка готовности робота к заказу
-    bool isRobotSuitable(IRobot* robot) const override;
+	//Возвращает количество роботов, готовых к выполнению заказа
+	int countSuitableRobots() const override;
 
-	//Фильтрует роботов в агрегате и возвращает тех, кто готов к осуществлению доставки
-    MyList<IRobot*> filterSuitableRobots(const IAggregate<IRobot*>& allRobots) const override;
+	//Возвращает количество роботов, нуждающихся в срочном обслуживании
+	int countRobotsInNeedOfService() const override;
 };

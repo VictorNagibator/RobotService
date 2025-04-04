@@ -1,13 +1,16 @@
 #pragma once
-#include "IRobot.h"
-#include "MyList.h"
+#include "IController.h"
 
 //Интерфейс информационного эксперта по состоянию роботов
 class IRobotExpert {
+protected:
+	IController* controller; //Контроллер, с которым работает эксперт
 public:
-    //Возвращает true, если робот готов к выполнению заказа
-    virtual bool isRobotSuitable(IRobot* robot) const = 0;
+	IRobotExpert(IController* controller) : controller(controller) {} //Конструктор с указанием контроллера
 
-    //Возвращает список роботов, готовых к выполнению заказа
-    virtual MyList<IRobot*> filterSuitableRobots(const IAggregate<IRobot*>& allRobots) const = 0;
+    //Возвращает количество роботов, готовых к выполнению заказа
+    virtual int countSuitableRobots() const = 0;
+
+	//Возвращает количество роботов, нуждающихся в срочном обслуживании
+	virtual int countRobotsInNeedOfService() const = 0;
 };

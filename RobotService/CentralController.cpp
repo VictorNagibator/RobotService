@@ -21,12 +21,6 @@ void CentralController::dispatchDelivery(IRobot* robot, const std::string& desti
     }
     if (!isRobotInCollection) throw std::invalid_argument("Робот не зарегистрирован в системе!");
 
-	//Теперь используем эксперта для анализа готовности робота
-	if (!expert->isRobotSuitable(robot)) {
-		std::cout << controllerName << ": робот не готов к выполнению заказа.\n";
-		return;
-	}
-
     std::cout << controllerName << ": назначение доставки до " << destination << "\n";
     robot->startDelivery(destination);
 

@@ -7,8 +7,8 @@ class CentralController : public IController {
 private:
 	IAggregate<IRobot*>* robots; //Коллекция роботов
 public:
-    CentralController(const std::string& name, IRobotExpert* expert, IAggregate<IRobot*>* collection) 
-        : IController(name, expert), robots(collection) {} 
+    CentralController(const std::string& name, IAggregate<IRobot*>* collection) 
+        : IController(name), robots(collection) {} 
 
     void addRobot(IRobot* robot) override;
 	void removeRobot(IRobot* robot) override;

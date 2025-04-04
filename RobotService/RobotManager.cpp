@@ -53,23 +53,11 @@ void RobotManager::sendLowBatteryRobotsToCharge(double minBatteryLevel)
     ProxyIterator<IRobot*> it(collection.begin());
     while (it.hasNext()) {
         IRobot* robot = *(it.next());
-        if (robot->getPowerSource().getCharge() < minBatteryLevel) {
+
+		double batteryLevel = robot->getPowerSource().getCharge();
+
+        if (batteryLevel < minBatteryLevel) {
 			robot->moveTo(chargeLocation);
         }
     }
-}
-
-int RobotManager::getSuitableRobotsCount() const
-{
-    auto& expert = controller->getRobotExpert();
-    auto& collection = controller->getRobots();
-    //С помощью эксперта получаем роботов, способных доставлять заказы
-    auto suitableCollection = expert.filterSuitableRobots(controller->getRobots());
-
-    int count = 0;
-    ProxyIterator<IRobot*> it(suitableCollection.begin());
-    while (it.hasNext()) {
-        count++; //Считаем количество хороших роботов
-    }
-    return count;
 }

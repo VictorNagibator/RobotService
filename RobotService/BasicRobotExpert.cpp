@@ -2,29 +2,45 @@
 #include "MyList.h"
 #include "ProxyIterator.h"
 
-BasicRobotExpert::BasicRobotExpert(double maxSafeTemperatureForEngine, double minBatteryLevel) 
+BasicRobotExpert::BasicRobotExpert(IController* ctrl, double maxSafeTemperatureForEngine, double minBatteryLevel) 
+	: IRobotExpert(ctrl)
 {
     this->maxSafeTemperatureForEngine = maxSafeTemperatureForEngine;
     this->minBatteryLevel = minBatteryLevel;
 }
 
-bool BasicRobotExpert::isRobotSuitable(IRobot* robot) const
+int BasicRobotExpert::countSuitableRobots() const
 {
-    if (robot->getPowerSource().getCharge() < minBatteryLevel 
-        || robot->getEngine().getTemperature() < maxSafeTemperatureForEngine)
-        return false;
-    return true;
+	int count = 0;
+	ProxyIterator<IRobot*> it (controller->getRobots().begin());
+	while (it.hasNext()) {
+		IRobot* robot = *(it.next());
+
+		double robotCharge = robot->getPowerSource().getCharge();
+		double robotTemperature = robot->getEngine().getTemperature();
+
+		//Считаем для условий по доставке
+		if (robotCharge >= minBatteryLevelForDelivery && robotTemperature <= maxTemperatureForDelivery) {
+			count++;
+		}
+	}
+	return count;
 }
 
-MyList<IRobot*> BasicRobotExpert::filterSuitableRobots(const IAggregate<IRobot*>& allRobots) const
+int BasicRobotExpert::countRobotsInNeedOfService() const
 {
-    MyList<IRobot*> suitable;
-    ProxyIterator<IRobot*> it = allRobots.begin();
-    while (it.hasNext()) {
-        IRobot* robot = *(it.next());
-        if (isRobotSuitable(robot)) {
-            suitable.push(robot); //Добавляем только подходящих роботов
-        }
-    }
-    return suitable;
+	int count = 0;
+	ProxyIterator<IRobot*> it(controller->getRobots().begin());
+	while (it.hasNext()) {
+		IRobot* robot = *(it.next());
+
+		double robotCharge = robot->getPowerSource().getCharge();
+		double robotTemperature = robot->getEngine().getTemperature();
+
+		//Считаем для критических условий
+		if (robotCharge < minBatteryLevel || robotTemperature > maxSafeTemperatureForEngine) {
+			count++;
+		}
+	}
+	return count;
 }

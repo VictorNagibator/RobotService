@@ -19,7 +19,4 @@ public:
     void updateRoutesForAll(const std::string& newRoute);
     //Отправляет роботов с низким зарядом на подзарядку
     void sendLowBatteryRobotsToCharge(double minBatteryLevel = 20.0);
-
-    //Возможность узнать, сколько роботов способны доставлять заказы
-	int getSuitableRobotsCount() const;
 };

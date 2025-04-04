@@ -62,17 +62,24 @@ int main() {
     list.push(robot1);
     list.push(robot2);
 
-    //--- Информационный эксперт: создаем эксперта по состоянию роботов ---
-    IRobotExpert* expert = new BasicRobotExpert(); //Можно задать свои параметры, если нужно
-
     //Создаем контроллер
-    CentralController* controller = new CentralController("MainController", expert, &list);
+    IController* controller = new CentralController("MainController", &list);
+
+    //--- Информационный эксперт: создаем эксперта по состоянию роботов ---
+    IRobotExpert* expert = new BasicRobotExpert(controller); //Можно задать свои параметры, если нужно
+
+	//Проверяем количество роботов, готовых к выполнению заказа
+	std::cout << "\n=== ЭКСПЕРТ: Количество роботов, готовых к выполнению заказа: "
+		<< expert->countSuitableRobots() << std::endl;
+	//Проверяем количество роботов, нуждающихся в срочном обслуживании
+	std::cout << "=== ЭКСПЕРТ: Количество роботов, нуждающихся в срочном обслуживании: "
+		<< expert->countRobotsInNeedOfService() << std::endl;
 
     //--- Фасад: создаем RobotManager, который использует CentralController для управления роботами ---
     RobotManager manager(controller);
 
     //Демонстрируем работу системы через фасад:
-    std::cout << "=== ФАСАД: Возврат всех роботов на базу ===\n";
+    std::cout << "\n=== ФАСАД: Возврат всех роботов на базу ===\n";
     manager.returnAllRobotsToBase();
     std::cout << std::endl;
 
@@ -81,12 +88,15 @@ int main() {
     std::cout << std::endl;
 
     std::cout << "=== ФАСАД: Отправка роботов на зарядку с маленьким зарядом ===\n";
-    battery->consume(2900);
+    battery->consume(2900); //Для примера сильно разряжаю одну батарею
     manager.sendLowBatteryRobotsToCharge();
     std::cout << std::endl;
 
-    //Продемонстрируем также работу эксперта через попытку доставки при маленьком заряде
-    controller->dispatchDelivery(robot1, "Ленина, 40");
+    //Проверяем вновь количество роботов, готовых к выполнению заказа
+    std::cout << "=== ЭКСПЕРТ: Количество роботов, готовых к выполнению заказа: "
+        << expert->countSuitableRobots() << std::endl;
+    std::cout << "=== ЭКСПЕРТ: Количество роботов, нуждающихся в срочном обслуживании: "
+        << expert->countRobotsInNeedOfService() << std::endl;
 
     //Очистим память
     delete controller;
