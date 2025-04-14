@@ -14,4 +14,6 @@ public:
     void recharge() override;
     //Разряд батареи на определённое количество мАч
     void consume(double usage) override;
+
+    Battery* clone() const override;
 };

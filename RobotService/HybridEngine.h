@@ -12,4 +12,6 @@ public:
 
     void start() override;
     void stop() override;
+
+    HybridEngine* clone() const override;
 };

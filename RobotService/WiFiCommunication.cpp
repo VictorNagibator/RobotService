@@ -27,3 +27,8 @@ std::string WiFiCommunication::receiveCommand()
     std::cout << cmd << "\n";
     return cmd;
 }
+
+WiFiCommunication* WiFiCommunication::clone() const
+{
+	return new WiFiCommunication(*this);
+}

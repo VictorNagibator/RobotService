@@ -1,9 +1,10 @@
 #pragma once
 #include <string>
 #include "IEnvironment.h"
+#include "IPrototypeCommunication.h"
 
 //јбстрактный класс дл€ средств св€зи
-class ICommunication {
+class ICommunication : public IPrototypeCommunication {
 protected:
     IEnvironment* environment; //—реда, в которой работает средство св€зи
     int signalStrength; //—ила сигнала
@@ -23,4 +24,6 @@ public:
 
 	//ћожно помен€ть среду (например, робот попал под ливень или помен€л способ передвижени€)
 	virtual void setEnvironment(IEnvironment* env);
+
+	virtual ICommunication* clone() const = 0;
 };

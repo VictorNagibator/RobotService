@@ -18,4 +18,6 @@ public:
 
     //—имул€ци€ расхода топлива.
     void consume(double amount) override;
+
+    FuelCell* clone() const override;
 };

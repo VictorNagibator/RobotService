@@ -31,3 +31,8 @@ void VisionNavigation::adjustRoute()
     std::cout << "Компьютерное зрение: анализирую ситуацию через камеры в среде: " 
         << environment->getEnvironmentName() << "...\n";
 }
+
+VisionNavigation* VisionNavigation::clone() const
+{
+	return new VisionNavigation(*this);
+}

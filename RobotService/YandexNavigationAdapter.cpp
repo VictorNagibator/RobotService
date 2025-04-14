@@ -21,3 +21,8 @@ void YandexNavigationAdapter::adjustRoute()
     environment->interact();
     originalNav.reAdjust();
 }
+
+YandexNavigationAdapter* YandexNavigationAdapter::clone() const
+{
+	return new YandexNavigationAdapter(*this);
+}

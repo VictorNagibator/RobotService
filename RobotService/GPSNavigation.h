@@ -14,4 +14,6 @@ public:
     void navigate(const std::string& destination) override;
     void updatePosition(double newX, double newY) override;
     void adjustRoute() override;
+
+    GPSNavigation* clone() const override;
 };

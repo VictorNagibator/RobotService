@@ -15,4 +15,6 @@ public:
     void navigate(const std::string& destination) override;
     void updatePosition(double newX, double newY) override;
     void adjustRoute() override;
+
+    YandexNavigationAdapter* clone() const override;
 };

@@ -23,3 +23,8 @@ void Battery::consume(double usage) {
     environment->interact(); //При потреблении энергии среда движения так или иначе влияет
     std::cout << "Батарея разряжается. Текущий заряд: " << getCharge() << "%\n";
 }
+
+Battery* Battery::clone() const
+{
+	return new Battery(*this);
+}

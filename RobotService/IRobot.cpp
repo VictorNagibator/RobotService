@@ -31,3 +31,4 @@ const IPowerSource& IRobot::getPowerSource() const
 {
 	return *powerSource;
 }
+

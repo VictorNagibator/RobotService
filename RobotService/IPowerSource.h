@@ -2,8 +2,9 @@
 #include <string>
 #include <iostream>
 #include "IEnvironment.h"
+#include "IPrototypePowerSource.h"
 
-class IPowerSource {
+class IPowerSource : public IPrototypePowerSource {
 protected:
     IEnvironment* environment;
 public:
@@ -21,4 +22,6 @@ public:
     IEnvironment* getEnvironment() const;
     //Можно поменять среду
     virtual void setEnvironment(IEnvironment* env);
+
+	virtual IPowerSource* clone() const = 0;
 };

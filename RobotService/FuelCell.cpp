@@ -22,3 +22,8 @@ void FuelCell::consume(double amount) {
     environment->interact();
     std::cout << "Топливо использовано. Текущий уровень: " << fuelLevel << " / " << capacity << ".\n";
 }
+
+FuelCell* FuelCell::clone() const
+{
+	return new FuelCell(*this);
+}

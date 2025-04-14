@@ -16,3 +16,8 @@ void HybridEngine::stop() {
     environment->interact();
     std::cout << "√ибридный двигатель " << engineName << " останавливает работу.\n";
 }
+
+HybridEngine* HybridEngine::clone() const
+{
+	return new HybridEngine(*this);
+}

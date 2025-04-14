@@ -14,4 +14,6 @@ public:
 
     //Метод для обновления задержки соединения
     void updateLatency(int newLatency);
+
+    LTECommunication* clone() const override;
 };

@@ -32,3 +32,8 @@ void LTECommunication::updateLatency(int newLatency)
 {
     latency = newLatency;
 }
+
+LTECommunication* LTECommunication::clone() const
+{
+	return new LTECommunication(*this);
+}

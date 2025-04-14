@@ -16,3 +16,8 @@ void CombustionEngine::stop() {
     environment->interact();
     std::cout << "Двигатель внутреннего сгорания " << engineName << " останавливает работу.\n";
 }
+
+CombustionEngine* CombustionEngine::clone() const
+{
+	return new CombustionEngine(*this);
+}

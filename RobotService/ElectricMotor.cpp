@@ -16,3 +16,8 @@ void ElectricMotor::stop() {
     environment->interact();
     std::cout << "Электромотор " << engineName << " останавливает работу.\n";
 }
+
+ElectricMotor* ElectricMotor::clone() const
+{
+	return new ElectricMotor(*this);
+}

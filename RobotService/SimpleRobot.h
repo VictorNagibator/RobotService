@@ -13,4 +13,6 @@ public:
     void checkStatus() override;
 
 	void moveTo(const std::string& destination) override;
+
+    SimpleRobot* clone() const override;
 };

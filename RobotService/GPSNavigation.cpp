@@ -47,3 +47,8 @@ void GPSNavigation::adjustRoute()
     std::cout << "GPS: пересчёт маршрута в среде: " 
         << environment->getEnvironmentName() << "...\n";
 }
+
+GPSNavigation* GPSNavigation::clone() const
+{
+	return new GPSNavigation(*this);
+}

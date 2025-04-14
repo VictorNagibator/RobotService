@@ -12,4 +12,6 @@ public:
 
     void start() override;
     void stop() override;
+
+	CombustionEngine* clone() const override;
 };

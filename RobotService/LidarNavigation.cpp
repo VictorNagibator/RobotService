@@ -29,3 +29,8 @@ void LidarNavigation::adjustRoute()
     environment->interact();
     std::cout << "Лидар: пытаюсь обнаружить и обойти препятствия в среде: " << environment->getEnvironmentName() << "...\n";
 }
+
+LidarNavigation* LidarNavigation::clone() const
+{
+	return new LidarNavigation(*this);
+}

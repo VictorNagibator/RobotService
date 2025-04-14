@@ -3,9 +3,10 @@
 #include "IPowerSource.h"
 #include "ICommunication.h"
 #include "INavigation.h"
+#include "IPrototypeRobot.h"
 
 //Интерфейс робота
-class IRobot {
+class IRobot : public IPrototypeRobot {
 protected:
     int robotID; //Уникальный номер робота
     std::string modelName; //Название модели
@@ -28,4 +29,6 @@ public:
 	virtual const INavigation& getNavigation() const;
 	virtual const ICommunication& getCommunication() const;
 	virtual const IPowerSource& getPowerSource() const;
+
+    virtual IRobot* clone() const = 0;
 };

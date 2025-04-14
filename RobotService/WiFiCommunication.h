@@ -11,4 +11,6 @@ public:
     void establishConnection() override;
     void sendData(const std::string& data) override;
     std::string receiveCommand() override;
+
+    WiFiCommunication* clone() const override;
 };

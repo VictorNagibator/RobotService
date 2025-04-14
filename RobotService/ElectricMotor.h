@@ -11,4 +11,6 @@ public:
 
     void start() override;
     void stop() override;
+
+    ElectricMotor* clone() const override;
 };
