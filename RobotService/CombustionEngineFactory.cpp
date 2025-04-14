@@ -6,4 +6,3 @@ IEngine* CombustionEngineFactory::createEngine(const std::string& name,
 {
 	return new CombustionEngine(name, maxRMP, temperatureThreshold, environment);
 }
-}
