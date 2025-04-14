@@ -189,6 +189,15 @@
     <ClCompile Include="GPSNavigationFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RobotFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StandartGroundRobotFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StandartDroneFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IEngine.h">
@@ -363,6 +372,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GPSNavigationFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RobotFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StandartGroundRobotFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StandartDroneFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

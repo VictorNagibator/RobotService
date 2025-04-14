@@ -154,6 +154,7 @@
     <ClCompile Include="LTECommunicationFactory.cpp" />
     <ClCompile Include="NavigationFactory.cpp" />
     <ClCompile Include="PowerSourceFactory.cpp" />
+    <ClCompile Include="RobotFactory.cpp" />
     <ClCompile Include="SimpleRobot.cpp" />
     <ClCompile Include="HybridEngine.cpp" />
     <ClCompile Include="IAggregate.cpp" />
@@ -177,6 +178,8 @@
     <ClCompile Include="RobotGroup.cpp" />
     <ClCompile Include="RobotManager.cpp" />
     <ClCompile Include="RobotService.cpp" />
+    <ClCompile Include="StandartDroneFactory.cpp" />
+    <ClCompile Include="StandartGroundRobotFactory.cpp" />
     <ClCompile Include="StringHelper.cpp" />
     <ClCompile Include="VisionNavigation.cpp" />
     <ClCompile Include="VisionNavigationFactory.cpp" />
@@ -215,6 +218,7 @@
     <ClInclude Include="LTECommunicationFactory.h" />
     <ClInclude Include="NavigationFactory.h" />
     <ClInclude Include="PowerSourceFactory.h" />
+    <ClInclude Include="RobotFactory.h" />
     <ClInclude Include="SimpleRobot.h" />
     <ClInclude Include="HybridEngine.h" />
     <ClInclude Include="IAggregate.h" />
@@ -237,6 +241,8 @@
     <ClInclude Include="ProxyIterator.h" />
     <ClInclude Include="RobotGroup.h" />
     <ClInclude Include="RobotManager.h" />
+    <ClInclude Include="StandartDroneFactory.h" />
+    <ClInclude Include="StandartGroundRobotFactory.h" />
     <ClInclude Include="StringHelper.h" />
     <ClInclude Include="VisionNavigation.h" />
     <ClInclude Include="VisionNavigationFactory.h" />
