@@ -1,6 +1,18 @@
 #include "CentralController.h"
 #include "ProxyIterator.h"
 
+//Определяем статическую переменную
+CentralController* CentralController::self = nullptr;
+
+CentralController* CentralController::getInstance(const std::string& name, IAggregate<IRobot*>* collection) 
+{
+	//Проверяем, существует ли уже экземпляр контроллера
+    if (!self) {
+		self = new CentralController(name, collection); //Если нет, создаем новый
+    }
+	return self; //Возвращаем единственный экземпляр
+}
+
 void CentralController::addRobot(IRobot* robot)
 {
     robots->push(robot);
