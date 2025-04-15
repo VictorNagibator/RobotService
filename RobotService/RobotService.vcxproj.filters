@@ -48,7 +48,7 @@
     <ClCompile Include="WiFiCommunication.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LTECommunication.cpp">
+    <ClCompile Include="CellularCommunication.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="INavigation.cpp">
@@ -171,7 +171,7 @@
     <ClCompile Include="WiFiCommunicationFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LTECommunicationFactory.cpp">
+    <ClCompile Include="CellularCommunicationFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="BatteryFactory.cpp">
@@ -199,6 +199,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Prototype.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CommunicationChannel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LTEChannel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -236,7 +242,7 @@
     <ClInclude Include="WiFiCommunication.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LTECommunication.h">
+    <ClInclude Include="CellularCommunication.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="INavigation.h">
@@ -359,7 +365,7 @@
     <ClInclude Include="WiFiCommunicationFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LTECommunicationFactory.h">
+    <ClInclude Include="CellularCommunicationFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BatteryFactory.h">
@@ -387,6 +393,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Prototype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommunicationChannel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LTEChannel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

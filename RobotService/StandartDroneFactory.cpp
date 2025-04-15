@@ -3,7 +3,7 @@
 #include "ElectricMotorFactory.h"
 #include "BatteryFactory.h"
 #include "GPSNavigationFactory.h"
-#include "LTECommunicationFactory.h"
+#include "CellularCommunicationFactory.h"
 #include "AirEnvironment.h"
 
 IRobot* StandartDroneFactory::createRobot(int id, std::string name)
@@ -22,7 +22,7 @@ IRobot* StandartDroneFactory::createRobot(int id, std::string name)
 	//Создаем навигацию и связь для дрона
 	GPSNavigationFactory navigationFactory;
 	INavigation* navigation = navigationFactory.createNavigation(environment);
-	LTECommunicationFactory communicationFactory;
+	CellularCommunicationFactory communicationFactory;
 	ICommunication* communication = communicationFactory.createCommunication(50, environment);
 
 	//Управление объектами передаем клиенту - как роботом, так и компонентами

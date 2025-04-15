@@ -134,6 +134,7 @@
     <ClCompile Include="CentralController.cpp" />
     <ClCompile Include="CombustionEngine.cpp" />
     <ClCompile Include="CombustionEngineFactory.cpp" />
+    <ClCompile Include="CommunicationChannel.cpp" />
     <ClCompile Include="CommunicationDecorator.cpp" />
     <ClCompile Include="CommunicationEncryptorDecorator.cpp" />
     <ClCompile Include="CommunicationFactory.cpp" />
@@ -151,7 +152,8 @@
     <ClCompile Include="GroundEnvironment.cpp" />
     <ClCompile Include="HybridEngineFactory.cpp" />
     <ClCompile Include="LidarNavigationFactory.cpp" />
-    <ClCompile Include="LTECommunicationFactory.cpp" />
+    <ClCompile Include="LTEChannel.cpp" />
+    <ClCompile Include="CellularCommunicationFactory.cpp" />
     <ClCompile Include="NavigationFactory.cpp" />
     <ClCompile Include="PowerSourceFactory.cpp" />
     <ClCompile Include="Prototype.cpp" />
@@ -169,7 +171,7 @@
     <ClCompile Include="IRobotExpert.cpp" />
     <ClCompile Include="Iterator.cpp" />
     <ClCompile Include="LidarNavigation.cpp" />
-    <ClCompile Include="LTECommunication.cpp" />
+    <ClCompile Include="CellularCommunication.cpp" />
     <ClCompile Include="MapSegment.cpp" />
     <ClCompile Include="MapSegmentFactory.cpp" />
     <ClCompile Include="MyListIterator.cpp" />
@@ -198,6 +200,7 @@
     <ClInclude Include="CentralController.h" />
     <ClInclude Include="CombustionEngine.h" />
     <ClInclude Include="CombustionEngineFactory.h" />
+    <ClInclude Include="CommunicationChannel.h" />
     <ClInclude Include="CommunicationDecorator.h" />
     <ClInclude Include="CommunicationEncryptorDecorator.h" />
     <ClInclude Include="CommunicationFactory.h" />
@@ -216,7 +219,8 @@
     <ClInclude Include="GroundEnvironment.h" />
     <ClInclude Include="HybridEngineFactory.h" />
     <ClInclude Include="LidarNavigationFactory.h" />
-    <ClInclude Include="LTECommunicationFactory.h" />
+    <ClInclude Include="LTEChannel.h" />
+    <ClInclude Include="CellularCommunicationFactory.h" />
     <ClInclude Include="NavigationFactory.h" />
     <ClInclude Include="PowerSourceFactory.h" />
     <ClInclude Include="Prototype.h" />
@@ -234,7 +238,7 @@
     <ClInclude Include="IRobotExpert.h" />
     <ClInclude Include="Iterator.h" />
     <ClInclude Include="LidarNavigation.h" />
-    <ClInclude Include="LTECommunication.h" />
+    <ClInclude Include="CellularCommunication.h" />
     <ClInclude Include="MapSegment.h" />
     <ClInclude Include="MapSegmentFactory.h" />
     <ClInclude Include="MyListIterator.h" />

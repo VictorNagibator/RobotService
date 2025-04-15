@@ -3,7 +3,7 @@
 #include "HybridEngineFactory.h"
 #include "BatteryFactory.h"
 #include "LidarNavigationFactory.h"
-#include "LTECommunicationFactory.h"
+#include "CellularCommunicationFactory.h"
 #include "GroundEnvironment.h"
 
 IRobot* StandartGroundRobotFactory::createRobot(int id, std::string name)
@@ -22,7 +22,7 @@ IRobot* StandartGroundRobotFactory::createRobot(int id, std::string name)
 	//Создаем навигацию и связь
 	LidarNavigationFactory navigationFactory;
 	INavigation* navigation = navigationFactory.createNavigation(environment);
-	LTECommunicationFactory communicationFactory;
+	CellularCommunicationFactory communicationFactory;
 	ICommunication* communication = communicationFactory.createCommunication(100, environment);
 
 	//Управление объектами передаем клиенту - как роботом, так и компонентами

@@ -8,7 +8,7 @@
 #include "SimpleRobot.h"
 #include "CombustionEngine.h"
 #include "VisionNavigation.h"
-#include "LTECommunication.h"
+#include "CellularCommunication.h"
 #include "FuelCell.h"
 #include "Drone.h"
 #include "CentralController.h"
