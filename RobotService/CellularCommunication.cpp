@@ -1,10 +1,16 @@
 #include "CellularCommunication.h"
 #include <iostream>
 
-CellularCommunication::CellularCommunication(int signalStrength, int latency, IEnvironment* environment) 
+CellularCommunication::CellularCommunication(int signalStrength, int latency, IEnvironment* environment, int poolSize) 
     : ICommunication(signalStrength, environment)
 {
     this->latency = latency;
+	channelPool = new CellularChannelPool(poolSize); //Создаем пул каналов
+}
+
+CellularCommunication::~CellularCommunication()
+{
+	delete channelPool; //Освобождаем память, выделенную под пул каналов
 }
 
 void CellularCommunication::establishConnection() 
@@ -17,8 +23,13 @@ void CellularCommunication::establishConnection()
 void CellularCommunication::sendData(const std::string& data)
 {
     environment->interact();
-    std::cout << "Мобильная связь отправляет данные: " << data 
-        << ". Коэффициент затухания сигнала: " << environment->getCommunicationAttenuation() << "\n";
+
+    //Получаем канал из пула
+    CellularChannel* channel = channelPool->acquire();
+    //Передаем сообщение через канал
+    channel->transmit(data);
+    //Возвращаем канал обратно в пул
+    channelPool->release(channel);
 }
 
 std::string CellularCommunication::receiveCommand()
