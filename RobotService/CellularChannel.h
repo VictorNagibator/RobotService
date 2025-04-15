@@ -2,8 +2,8 @@
 #include <string>
 #include <iostream>
 
-//Интерфейс канала связи
-class CommunicationChannel {
+//Интерфейс мобильного канала связи
+class CellularChannel {
 public:
 	virtual void connect() = 0; //Установить соединение
 	virtual void transmit(const std::string& message) = 0; //Передать сообщение

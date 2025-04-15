@@ -201,10 +201,13 @@
     <ClCompile Include="Prototype.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CommunicationChannel.cpp">
+    <ClCompile Include="CellularChannel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LTEChannel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HSPAChannel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -395,10 +398,13 @@
     <ClInclude Include="Prototype.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CommunicationChannel.h">
+    <ClInclude Include="CellularChannel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LTEChannel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HSPAChannel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

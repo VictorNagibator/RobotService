@@ -134,7 +134,7 @@
     <ClCompile Include="CentralController.cpp" />
     <ClCompile Include="CombustionEngine.cpp" />
     <ClCompile Include="CombustionEngineFactory.cpp" />
-    <ClCompile Include="CommunicationChannel.cpp" />
+    <ClCompile Include="CellularChannel.cpp" />
     <ClCompile Include="CommunicationDecorator.cpp" />
     <ClCompile Include="CommunicationEncryptorDecorator.cpp" />
     <ClCompile Include="CommunicationFactory.cpp" />
@@ -150,6 +150,7 @@
     <ClCompile Include="GPSNavigation.cpp" />
     <ClCompile Include="GPSNavigationFactory.cpp" />
     <ClCompile Include="GroundEnvironment.cpp" />
+    <ClCompile Include="HSPAChannel.cpp" />
     <ClCompile Include="HybridEngineFactory.cpp" />
     <ClCompile Include="LidarNavigationFactory.cpp" />
     <ClCompile Include="LTEChannel.cpp" />
@@ -200,7 +201,7 @@
     <ClInclude Include="CentralController.h" />
     <ClInclude Include="CombustionEngine.h" />
     <ClInclude Include="CombustionEngineFactory.h" />
-    <ClInclude Include="CommunicationChannel.h" />
+    <ClInclude Include="CellularChannel.h" />
     <ClInclude Include="CommunicationDecorator.h" />
     <ClInclude Include="CommunicationEncryptorDecorator.h" />
     <ClInclude Include="CommunicationFactory.h" />
@@ -217,6 +218,7 @@
     <ClInclude Include="GPSNavigation.h" />
     <ClInclude Include="GPSNavigationFactory.h" />
     <ClInclude Include="GroundEnvironment.h" />
+    <ClInclude Include="HSPAChannel.h" />
     <ClInclude Include="HybridEngineFactory.h" />
     <ClInclude Include="LidarNavigationFactory.h" />
     <ClInclude Include="LTEChannel.h" />
