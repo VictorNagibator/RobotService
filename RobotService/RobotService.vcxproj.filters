@@ -210,6 +210,9 @@
     <ClCompile Include="HSPAChannel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CellularChannelPool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IEngine.h">
@@ -405,6 +408,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HSPAChannel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CellularChannelPool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

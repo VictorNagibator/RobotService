@@ -131,6 +131,7 @@
     <ClCompile Include="BasicRobotExpert.cpp" />
     <ClCompile Include="Battery.cpp" />
     <ClCompile Include="BatteryFactory.cpp" />
+    <ClCompile Include="CellularChannelPool.cpp" />
     <ClCompile Include="CentralController.cpp" />
     <ClCompile Include="CombustionEngine.cpp" />
     <ClCompile Include="CombustionEngineFactory.cpp" />
@@ -198,6 +199,7 @@
     <ClInclude Include="BasicRobotExpert.h" />
     <ClInclude Include="Battery.h" />
     <ClInclude Include="BatteryFactory.h" />
+    <ClInclude Include="CellularChannelPool.h" />
     <ClInclude Include="CentralController.h" />
     <ClInclude Include="CombustionEngine.h" />
     <ClInclude Include="CombustionEngineFactory.h" />
