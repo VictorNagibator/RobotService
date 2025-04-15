@@ -10,11 +10,14 @@ private:
 
     //Пул каналов для связи
     CellularChannelPool* channelPool;
+
+    //Канал, который используется в данный момент
+	CellularChannel* channel;
 public:
-    CellularCommunication(int signalStrength, int latency, IEnvironment* environment, int poolSize = 3);
-	~CellularCommunication();
+    CellularCommunication(int signalStrength, int latency, IEnvironment* environment, CellularChannelPool* pool);
 
     void establishConnection() override;
+	void disconnect() override; //Метод отключения от сети
     void sendData(const std::string& data) override;
     std::string receiveCommand() override;
 

@@ -21,7 +21,7 @@ void VisionNavigation::navigate(const std::string& destination)
 void VisionNavigation::updatePosition(double newX, double newY)
 {
     environment->interact();
-    updatePosition(newX, newY);
+    INavigation::updatePosition(newX, newY);
     std::cout << "Компьютерное зрение: обновляю позицию (" << x << ", " << y << ").\n";
 }
 

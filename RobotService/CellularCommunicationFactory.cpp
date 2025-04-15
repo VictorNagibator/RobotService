@@ -4,5 +4,5 @@
 ICommunication* CellularCommunicationFactory::createCommunication(
 	int signalStrength, IEnvironment* env)
 {
-	return new CellularCommunication(signalStrength, standartLatency, env);
+	return new CellularCommunication(signalStrength, standartLatency, env, channelPool);
 }

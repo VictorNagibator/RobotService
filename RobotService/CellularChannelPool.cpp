@@ -7,13 +7,11 @@ CellularChannelPool::CellularChannelPool(int initialSize)
 
     for (int i = 0; i < initialSize / 2; ++i) {
         CellularChannel* ch = new LTEChannel();
-        ch->connect();
         pool.push(ch);
     }
 
     for (int i = initialSize / 2; i < initialSize; ++i) {
         CellularChannel* ch = new HSPAChannel();
-        ch->connect();
         pool.push(ch);
     }
 }
@@ -36,13 +34,11 @@ CellularChannel* CellularChannelPool::acquire() {
 		//≈сли есть доступные каналы, берем один из пула
         CellularChannel* ch = pool.front();
         pool.pop();
-        ch->connect();
         return ch;
     }
 }
 
 //¬озвращаем канал обратно в пул
 void CellularChannelPool::release(CellularChannel* ch) {
-    ch->disconnect();
     pool.push(ch);
 }

@@ -13,6 +13,8 @@ public:
 
     //Установление связи с центральным контроллером
     virtual void establishConnection() = 0;
+	//Отключение от сети
+	virtual void disconnect() = 0;
     //Передача данных о состоянии робота
     virtual void sendData(const std::string& data) = 0;
     //Приём управляющих команд от центрального контроллера

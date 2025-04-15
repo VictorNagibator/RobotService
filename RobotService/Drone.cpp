@@ -4,6 +4,7 @@ void Drone::startDelivery(const std::string& destination)
 {
     try
     {
+        communication->establishConnection();
         std::cout << "ƒрон " << robotID << " (" << modelName
             << ") взлетает и начинает доставку до " << destination << ".\n";
         moveTo(destination);
@@ -11,6 +12,9 @@ void Drone::startDelivery(const std::string& destination)
     }
     catch (const std::exception& e)
     {
+		//≈сли не удалось осуществить доставку, то дрон приземл€етс€
+		stopDelivery();
+
 		std::cout << "ƒрон " << robotID << " (" << modelName
 			<< ") не может осуществить доставку: "
             << e.what() << "\n";
@@ -23,6 +27,7 @@ void Drone::stopDelivery()
         << ") приземл€етс€ и заканчивает доставку.\n";
     engine->stop();
     communication->sendData("ƒрон: прекратил доставку.");
+    communication->disconnect();
 }
 
 void Drone::checkStatus()

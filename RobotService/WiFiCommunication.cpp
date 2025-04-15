@@ -14,6 +14,11 @@ void WiFiCommunication::establishConnection()
         << ", Сигнал: " << signalStrength << " дБм) подключился к центральному управлению.\n";
 }
 
+void WiFiCommunication::disconnect()
+{
+	std::cout << "WiFi (Канал " << channel << ") отключился от центрального управления.\n";
+}
+
 void WiFiCommunication::sendData(const std::string& data) 
 {
     environment->interact();

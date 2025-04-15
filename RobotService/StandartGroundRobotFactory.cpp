@@ -6,6 +6,16 @@
 #include "CellularCommunicationFactory.h"
 #include "GroundEnvironment.h"
 
+StandartGroundRobotFactory::StandartGroundRobotFactory()
+{
+	channelPool = new CellularChannelPool(5); //Создаем пул каналов связи (для демонстрации)
+}
+
+StandartGroundRobotFactory::~StandartGroundRobotFactory()
+{
+	delete channelPool; //Освобождаем память
+}
+
 IRobot* StandartGroundRobotFactory::createRobot(int id, std::string name)
 {
 	//Создаем наземную среду
@@ -18,11 +28,12 @@ IRobot* StandartGroundRobotFactory::createRobot(int id, std::string name)
 	//Аналогично создаем аккумулятор
 	BatteryFactory batteryFactory;
 	IPowerSource* powerSource = batteryFactory.createPowerSource(environment);
+	powerSource->recharge();
 
 	//Создаем навигацию и связь
 	LidarNavigationFactory navigationFactory;
 	INavigation* navigation = navigationFactory.createNavigation(environment);
-	CellularCommunicationFactory communicationFactory;
+	CellularCommunicationFactory communicationFactory(channelPool); //У всех роботов с одной фабрики будет один и тот же пул
 	ICommunication* communication = communicationFactory.createCommunication(100, environment);
 
 	//Управление объектами передаем клиенту - как роботом, так и компонентами

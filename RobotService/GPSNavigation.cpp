@@ -2,11 +2,21 @@
 #include "StringHelper.h"
 #include <iostream>
 
-GPSNavigation::GPSNavigation(IEnvironment* environment, double accuracy, int satelliteCount, double startX, double startY)
+GPSNavigation::GPSNavigation(IEnvironment* environment, MapSegment* map, 
+    double accuracy, int satelliteCount, double startX, double startY)
     : INavigation(environment, startX, startY)
 {
     this->accuracy = accuracy;
     this->satelliteCount = satelliteCount;
+    currentMap = map;
+}
+
+void GPSNavigation::updateMap(MapSegment* newMap)
+{
+    currentMap = newMap;
+    std::cout << "GPSNavigation: Карта обновлена.\n";
+    std::cout << "GPSNavigation: Новая карта: ";
+    currentMap->printMapInfo();
 }
 
 void GPSNavigation::navigate(const std::string& destination)
@@ -21,10 +31,13 @@ void GPSNavigation::navigate(const std::string& destination)
         houseStr = StringHelper::deleteSpaces(houseStr);
         int houseNumber = std::stoi(houseStr);
 
-        //Получаем сегмент карты для данной улицы
-        MapSegment* segment = factory.getSegment(street, houseNumber);
-        std::cout << "GPSNavigation: Маршрут рассчитан через сегмент: ";
-        segment->printInfo();
+        if (!currentMap->hasAddress(street, houseNumber))
+        {
+			//Если адрес не найден, то выходим
+			std::cout << "GPSNavigation: Адрес не найден на карте.\n";
+			return;
+        }
+
         std::cout << "Дом " << houseNumber << " найден на сегменте "
             << "с точностью " << accuracy - environment->getNavigationAccuracyFactor() 
             << " м., используя " << satelliteCount << " спутников.\n"; ;
@@ -37,7 +50,7 @@ void GPSNavigation::navigate(const std::string& destination)
 void GPSNavigation::updatePosition(double newX, double newY)
 {
     environment->interact();
-    updatePosition(newX, newY); //Обновляем координаты через стандартную реализацию
+    INavigation::updatePosition(newX, newY); //Обновляем координаты через стандартную реализацию
     std::cout << "GPS: обновлена позиция (" << x << ", " << y << ").\n";
 }
 

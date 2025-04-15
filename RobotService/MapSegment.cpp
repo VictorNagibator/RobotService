@@ -1,30 +1,23 @@
 #include "MapSegment.h"
 
-MapSegment::MapSegment(const std::string& street)
+void MapSegment::addStreet(StreetSegment* segment)
 {
-	streetName = street;
+    segments.push_back(segment);
 }
 
-void MapSegment::addHouseNumber(int number) 
+void MapSegment::printMapInfo() const
 {
-    houseNumbers.insert(number);
+    std::cout << "Информация о сегменте карты:\n";
+    for (auto seg : segments)
+        seg->printInfo();
 }
 
-std::string MapSegment::getStreetName() const
+bool MapSegment::hasAddress(const std::string& streetName, int houseNum) const
 {
-    return streetName;
-}
-
-bool MapSegment::hasHouse(int houseNumber) const 
-{
-    return houseNumbers.find(houseNumber) != houseNumbers.end();
-}
-
-void MapSegment::printInfo() const
-{
-    std::cout << "Сегмент улицы " << streetName
-        << ". Дома: ";
-    for (int num : houseNumbers)
-        std::cout << num << " ";
-    std::cout << "\n";
+	for (const auto& segment : segments) {
+		if (segment->getStreetName() == streetName && segment->hasHouse(houseNum)) {
+			return true;
+		}
+	}
+	return false;
 }

@@ -20,7 +20,7 @@ void LidarNavigation::navigate(const std::string& destination)
 void LidarNavigation::updatePosition(double newX, double newY)
 {
     environment->interact();
-    updatePosition(newX, newY);
+    INavigation::updatePosition(newX, newY);
     std::cout << "Лидар: обновлена позиция (" << x << ", " << y << ").\n";
 }
 

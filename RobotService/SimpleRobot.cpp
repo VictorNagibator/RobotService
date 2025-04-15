@@ -4,6 +4,7 @@ void SimpleRobot::startDelivery(const std::string& destination)
 {
     try
     {
+        communication->establishConnection();
         std::cout << "ќбычный робот " << robotID << " (" << modelName
             << ") начинает доставку до " << destination << ".\n";
         moveTo(destination);
@@ -11,6 +12,8 @@ void SimpleRobot::startDelivery(const std::string& destination)
     }
     catch (const std::exception& e)
     {
+        stopDelivery();
+
         std::cout << "ќбычный робот " << robotID << " (" << modelName
             << ") не может осуществить доставку: "
             << e.what() << "\n";
@@ -23,6 +26,7 @@ void SimpleRobot::stopDelivery()
         << ") прекратил доставку.\n";
     engine->stop();
     communication->sendData("ќбычный робот: прекратил доставку.");
+	communication->disconnect();
 }
 
 void SimpleRobot::checkStatus()

@@ -127,7 +127,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AdvancedMapDirector.cpp" />
     <ClCompile Include="AirEnvironment.cpp" />
+    <ClCompile Include="BasicMapDirector.cpp" />
     <ClCompile Include="BasicRobotExpert.cpp" />
     <ClCompile Include="Battery.cpp" />
     <ClCompile Include="BatteryFactory.cpp" />
@@ -141,6 +143,7 @@
     <ClCompile Include="CommunicationFactory.cpp" />
     <ClCompile Include="CommunicationPrinterDecorator.cpp" />
     <ClCompile Include="CommunicationTimestampDecorator.cpp" />
+    <ClCompile Include="DetailedMapSegmentBuilder.cpp" />
     <ClCompile Include="Drone.cpp" />
     <ClCompile Include="ElectricMotor.cpp" />
     <ClCompile Include="ElectricMotorFactory.cpp" />
@@ -153,10 +156,15 @@
     <ClCompile Include="GroundEnvironment.cpp" />
     <ClCompile Include="HSPAChannel.cpp" />
     <ClCompile Include="HybridEngineFactory.cpp" />
+    <ClCompile Include="IMapDirector.cpp" />
+    <ClCompile Include="IMapSegmentBuilder.cpp" />
     <ClCompile Include="LidarNavigationFactory.cpp" />
     <ClCompile Include="LTEChannel.cpp" />
     <ClCompile Include="CellularCommunicationFactory.cpp" />
+    <ClCompile Include="MapFeature.cpp" />
+    <ClCompile Include="MapSegment.cpp" />
     <ClCompile Include="NavigationFactory.cpp" />
+    <ClCompile Include="PedestrianCrossing.cpp" />
     <ClCompile Include="PowerSourceFactory.cpp" />
     <ClCompile Include="Prototype.cpp" />
     <ClCompile Include="RobotFactory.cpp" />
@@ -174,8 +182,8 @@
     <ClCompile Include="Iterator.cpp" />
     <ClCompile Include="LidarNavigation.cpp" />
     <ClCompile Include="CellularCommunication.cpp" />
-    <ClCompile Include="MapSegment.cpp" />
-    <ClCompile Include="MapSegmentFactory.cpp" />
+    <ClCompile Include="StreetSegment.cpp" />
+    <ClCompile Include="StreetSegmentFactory.cpp" />
     <ClCompile Include="MyListIterator.cpp" />
     <ClCompile Include="MyList.cpp" />
     <ClCompile Include="ProxyEngine.cpp" />
@@ -186,6 +194,7 @@
     <ClCompile Include="StandartDroneFactory.cpp" />
     <ClCompile Include="StandartGroundRobotFactory.cpp" />
     <ClCompile Include="StringHelper.cpp" />
+    <ClCompile Include="TrafficLight.cpp" />
     <ClCompile Include="VisionNavigation.cpp" />
     <ClCompile Include="VisionNavigationFactory.cpp" />
     <ClCompile Include="WaterEnvironment.cpp" />
@@ -195,7 +204,9 @@
     <ClCompile Include="YandexNavigationSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AdvancedMapDirector.h" />
     <ClInclude Include="AirEnvironment.h" />
+    <ClInclude Include="BasicMapDirector.h" />
     <ClInclude Include="BasicRobotExpert.h" />
     <ClInclude Include="Battery.h" />
     <ClInclude Include="BatteryFactory.h" />
@@ -209,6 +220,7 @@
     <ClInclude Include="CommunicationFactory.h" />
     <ClInclude Include="CommunicationPrinterDecorator.h" />
     <ClInclude Include="CommunicationTimestampDecorator.h" />
+    <ClInclude Include="DetailedMapSegmentBuilder.h" />
     <ClInclude Include="Drone.h" />
     <ClInclude Include="ElectricMotor.h" />
     <ClInclude Include="ElectricMotorFactory.h" />
@@ -222,10 +234,15 @@
     <ClInclude Include="GroundEnvironment.h" />
     <ClInclude Include="HSPAChannel.h" />
     <ClInclude Include="HybridEngineFactory.h" />
+    <ClInclude Include="IMapDirector.h" />
+    <ClInclude Include="IMapSegmentBuilder.h" />
     <ClInclude Include="LidarNavigationFactory.h" />
     <ClInclude Include="LTEChannel.h" />
     <ClInclude Include="CellularCommunicationFactory.h" />
+    <ClInclude Include="MapFeature.h" />
+    <ClInclude Include="MapSegment.h" />
     <ClInclude Include="NavigationFactory.h" />
+    <ClInclude Include="PedestrianCrossing.h" />
     <ClInclude Include="PowerSourceFactory.h" />
     <ClInclude Include="Prototype.h" />
     <ClInclude Include="RobotFactory.h" />
@@ -243,8 +260,8 @@
     <ClInclude Include="Iterator.h" />
     <ClInclude Include="LidarNavigation.h" />
     <ClInclude Include="CellularCommunication.h" />
-    <ClInclude Include="MapSegment.h" />
-    <ClInclude Include="MapSegmentFactory.h" />
+    <ClInclude Include="StreetSegment.h" />
+    <ClInclude Include="StreetSegmentFactory.h" />
     <ClInclude Include="MyListIterator.h" />
     <ClInclude Include="MyList.h" />
     <ClInclude Include="ProxyEngine.h" />
@@ -254,6 +271,7 @@
     <ClInclude Include="StandartDroneFactory.h" />
     <ClInclude Include="StandartGroundRobotFactory.h" />
     <ClInclude Include="StringHelper.h" />
+    <ClInclude Include="TrafficLight.h" />
     <ClInclude Include="VisionNavigation.h" />
     <ClInclude Include="VisionNavigationFactory.h" />
     <ClInclude Include="WaterEnvironment.h" />

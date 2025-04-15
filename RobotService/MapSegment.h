@@ -1,26 +1,17 @@
 #pragma once
-#pragma once
-#include <string>
-#include <set>
+#include "StreetSegment.h"
+#include <vector>
 #include <iostream>
 
-//Flyweight-объект для сегмента карты
-//Сегмент содержит название улицы и список номеров домов на этом сегменте
-class MapSegment {
+//Объект для отображения карты, состоящей из сегментов улиц
+class MapSegment 
+{
 private:
-    std::string streetName;
-    std::set<int> houseNumbers; //множество домов на сегменте
+    std::vector<StreetSegment*> segments;
 public:
-    MapSegment(const std::string& street);
+    void addStreet(StreetSegment* segment);
+    void printMapInfo() const;
 
-    //Добавляет номер дома в сегмент
-    void addHouseNumber(int number);
-
-    std::string getStreetName() const;
-
-    //Проверяет, присутствует ли дом в сегменте
-    bool hasHouse(int houseNumber) const;
-
-    //Выводит информацию о сегменте
-    void printInfo() const;
+    //Проверка, есть ли такой адрес на карте
+    bool hasAddress(const std::string& streetName, int houseNum) const;
 };
