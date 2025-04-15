@@ -1,9 +1,9 @@
 #pragma once
 #include <string>
 #include "IEnvironment.h"
-#include "IPrototypeEngine.h"
+#include "Prototype.h"
 
-class IEngine : public IPrototypeEngine
+class IEngine : public Prototype
 {
 protected:
     IEnvironment* environment; //—реда, в которой работает двигатель
@@ -33,5 +33,6 @@ public:
     //ћожно помен€ть среду
     virtual void setEnvironment(IEnvironment* env);
     
+	//ћожно уточнить возвращаемый тип, так как IEngine €вл€етс€ наследником Prototype
 	virtual IEngine* clone() const = 0;
 };

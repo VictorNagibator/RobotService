@@ -3,10 +3,10 @@
 #include "IPowerSource.h"
 #include "ICommunication.h"
 #include "INavigation.h"
-#include "IPrototypeRobot.h"
+#include "Prototype.h"
 
 //Интерфейс робота
-class IRobot : public IPrototypeRobot {
+class IRobot : public Prototype {
 protected:
     int robotID; //Уникальный номер робота
     std::string modelName; //Название модели

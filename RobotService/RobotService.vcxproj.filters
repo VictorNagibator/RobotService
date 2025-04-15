@@ -198,19 +198,7 @@
     <ClCompile Include="StandartDroneFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IPrototypeEngine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="IPrototypePowerSource.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="IPrototypeCommunication.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="IPrototypeNavigation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="IPrototypeRobot.cpp">
+    <ClCompile Include="Prototype.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -398,19 +386,7 @@
     <ClInclude Include="StandartDroneFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IPrototypeEngine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IPrototypePowerSource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IPrototypeCommunication.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IPrototypeNavigation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IPrototypeRobot.h">
+    <ClInclude Include="Prototype.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

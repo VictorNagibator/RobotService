@@ -1,10 +1,10 @@
 #pragma once
 #include <string>
 #include "IEnvironment.h"
-#include "IPrototypeNavigation.h"
+#include "Prototype.h"
 
 //Абстрактный класс навигационной системы
-class INavigation : public IPrototypeNavigation {
+class INavigation : public Prototype {
 protected:
     IEnvironment* environment;
     double x, y; //Координаты робота

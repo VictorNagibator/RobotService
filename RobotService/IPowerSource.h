@@ -2,9 +2,9 @@
 #include <string>
 #include <iostream>
 #include "IEnvironment.h"
-#include "IPrototypePowerSource.h"
+#include "Prototype.h"
 
-class IPowerSource : public IPrototypePowerSource {
+class IPowerSource : public Prototype {
 protected:
     IEnvironment* environment;
 public:
