@@ -12,7 +12,7 @@ private:
     CellularChannelPool* channelPool;
 
     // анал, который используетс€ в данный момент
-	CellularChannel* channel;
+	ICellularChannel* channel;
 public:
     CellularCommunication(int signalStrength, int latency, IEnvironment* environment, CellularChannelPool* pool);
 

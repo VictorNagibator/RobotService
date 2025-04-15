@@ -38,3 +38,23 @@ void RobotGroup::checkStatus()
 		(*it.next())->checkStatus();
 	}
 }
+
+void RobotGroup::moveTo(const std::string& destination)
+{
+	//Аналогично
+	auto it = ProxyIterator<IRobot*>(robots->begin());
+	while (it.hasNext()) {
+		(*it.next())->moveTo(destination);
+	}
+}
+
+IRobot* RobotGroup::clone() const
+{
+	//Создаем новый объект RobotGroup и копируем в него роботов из текущей группы
+	RobotGroup* newGroup = new RobotGroup(new MyList<IRobot*>());
+	auto it = ProxyIterator<IRobot*>(robots->begin());
+	while (it.hasNext()) {
+		newGroup->addRobot((*it.next())->clone());
+	}
+	return newGroup;
+}

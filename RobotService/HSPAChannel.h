@@ -1,8 +1,8 @@
 #pragma once
-#include "CellularChannel.h"
+#include "ICellularChannel.h"
 
 //Канал связи для 3G
-class HSPAChannel : public CellularChannel
+class HSPAChannel : public ICellularChannel
 {
 public:
     void connect() override;

@@ -19,4 +19,6 @@ public:
     void startDelivery(const std::string& destination) override;
     void stopDelivery() override;
     void checkStatus() override;
+	void moveTo(const std::string& destination) override;
+    IRobot* clone() const override;
 };

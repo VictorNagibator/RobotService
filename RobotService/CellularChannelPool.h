@@ -1,5 +1,5 @@
 #pragma once
-#include "CellularChannel.h"
+#include "ICellularChannel.h"
 #include "LTEChannel.h"
 #include "HSPAChannel.h"
 #include <queue>
@@ -8,7 +8,7 @@
 class CellularChannelPool
 {
 private:
-    std::queue<CellularChannel*> pool;
+    std::queue<ICellularChannel*> pool;
 public:
 	// онструктор, который создает пул каналов заданного размера
     CellularChannelPool(int initialSize);
@@ -17,8 +17,8 @@ public:
     ~CellularChannelPool();
 
     //ѕолучаем канал из пула
-    CellularChannel* acquire();
+    ICellularChannel* acquire();
 
     //¬озвращаем канал обратно в пул
-    void release(CellularChannel* ch);
+    void release(ICellularChannel* ch);
 };

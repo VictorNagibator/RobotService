@@ -1,8 +1,8 @@
 #pragma once
-#include "CellularChannel.h"
+#include "ICellularChannel.h"
 
 //Канал связи для 4G
-class LTEChannel : public CellularChannel {
+class LTEChannel : public ICellularChannel {
 public:
     void connect() override;
     void transmit(const std::string& message) override;

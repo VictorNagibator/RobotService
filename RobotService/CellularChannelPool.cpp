@@ -6,12 +6,12 @@ CellularChannelPool::CellularChannelPool(int initialSize)
     //¬ реальной жизни пул будет инициазироватьс€ каналами, которые есть у конкретной вышки св€зи
 
     for (int i = 0; i < initialSize / 2; ++i) {
-        CellularChannel* ch = new LTEChannel();
+        ICellularChannel* ch = new LTEChannel();
         pool.push(ch);
     }
 
     for (int i = initialSize / 2; i < initialSize; ++i) {
-        CellularChannel* ch = new HSPAChannel();
+        ICellularChannel* ch = new HSPAChannel();
         pool.push(ch);
     }
 }
@@ -25,20 +25,20 @@ CellularChannelPool::~CellularChannelPool() {
 }
 
 //ѕолучаем канал из пула; если пул пуст, необходимо вывести сообщение
-CellularChannel* CellularChannelPool::acquire() {
+ICellularChannel* CellularChannelPool::acquire() {
     if (pool.empty()) {
         std::cout << "[ѕул каналов мобильной св€зи] Ќет доступных каналов!\n";
         return nullptr;
     }
     else {
 		//≈сли есть доступные каналы, берем один из пула
-        CellularChannel* ch = pool.front();
+        ICellularChannel* ch = pool.front();
         pool.pop();
         return ch;
     }
 }
 
 //¬озвращаем канал обратно в пул
-void CellularChannelPool::release(CellularChannel* ch) {
+void CellularChannelPool::release(ICellularChannel* ch) {
     pool.push(ch);
 }

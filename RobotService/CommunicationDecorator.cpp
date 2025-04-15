@@ -13,6 +13,11 @@ void CommunicationDecorator::establishConnection()
 	wrappedComm->establishConnection();
 }
 
+void CommunicationDecorator::disconnect()
+{
+	wrappedComm->disconnect();
+}
+
 void CommunicationDecorator::sendData(const std::string& data)
 {
 	wrappedComm->sendData(data);
@@ -21,4 +26,9 @@ void CommunicationDecorator::sendData(const std::string& data)
 std::string CommunicationDecorator::receiveCommand()
 {
 	return wrappedComm->receiveCommand();
+}
+
+CommunicationDecorator* CommunicationDecorator::clone() const
+{
+	return new CommunicationDecorator(*this);
 }

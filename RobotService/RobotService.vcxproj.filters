@@ -201,7 +201,7 @@
     <ClCompile Include="Prototype.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CellularChannel.cpp">
+    <ClCompile Include="ICellularChannel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LTEChannel.cpp">
@@ -428,7 +428,7 @@
     <ClInclude Include="Prototype.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CellularChannel.h">
+    <ClInclude Include="ICellularChannel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LTEChannel.h">

@@ -137,7 +137,7 @@
     <ClCompile Include="CentralController.cpp" />
     <ClCompile Include="CombustionEngine.cpp" />
     <ClCompile Include="CombustionEngineFactory.cpp" />
-    <ClCompile Include="CellularChannel.cpp" />
+    <ClCompile Include="ICellularChannel.cpp" />
     <ClCompile Include="CommunicationDecorator.cpp" />
     <ClCompile Include="CommunicationEncryptorDecorator.cpp" />
     <ClCompile Include="CommunicationFactory.cpp" />
@@ -214,7 +214,7 @@
     <ClInclude Include="CentralController.h" />
     <ClInclude Include="CombustionEngine.h" />
     <ClInclude Include="CombustionEngineFactory.h" />
-    <ClInclude Include="CellularChannel.h" />
+    <ClInclude Include="ICellularChannel.h" />
     <ClInclude Include="CommunicationDecorator.h" />
     <ClInclude Include="CommunicationEncryptorDecorator.h" />
     <ClInclude Include="CommunicationFactory.h" />
