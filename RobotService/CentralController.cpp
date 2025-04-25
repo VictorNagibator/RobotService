@@ -38,7 +38,7 @@ void CentralController::dispatchDelivery(IRobot* robot, const std::string& desti
 
     //В дальнейшем можно будет добавить логику ожидания, контроля процесса доставки и т.д.
 
-    robot->stopDelivery();
+    robot->wait();
 }
 
 void CentralController::monitorRobots() const

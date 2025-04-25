@@ -1,34 +1,5 @@
 #include "SimpleRobot.h"
 
-void SimpleRobot::startDelivery(const std::string& destination)
-{
-    try
-    {
-        communication->establishConnection();
-        std::cout << "Обычный робот " << robotID << " (" << modelName
-            << ") начинает доставку до " << destination << ".\n";
-        moveTo(destination);
-        communication->sendData("Обычный робот: начал доставку.");
-    }
-    catch (const std::exception& e)
-    {
-        stopDelivery();
-
-        std::cout << "Обычный робот " << robotID << " (" << modelName
-            << ") не может осуществить доставку: "
-            << e.what() << "\n";
-    }
-}
-
-void SimpleRobot::stopDelivery() 
-{
-    std::cout << "Обычный робот " << robotID << " (" << modelName
-        << ") прекратил доставку.\n";
-    engine->stop();
-    communication->sendData("Обычный робот: прекратил доставку.");
-	communication->disconnect();
-}
-
 void SimpleRobot::checkStatus()
 {
     std::cout << "Обычный робот " << robotID

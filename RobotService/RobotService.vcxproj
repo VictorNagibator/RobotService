@@ -135,8 +135,11 @@
     <ClCompile Include="BatteryFactory.cpp" />
     <ClCompile Include="CellularChannelPool.cpp" />
     <ClCompile Include="CentralController.cpp" />
+    <ClCompile Include="ChargingState.cpp" />
     <ClCompile Include="CombustionEngine.cpp" />
     <ClCompile Include="CombustionEngineFactory.cpp" />
+    <ClCompile Include="DeliveringState.cpp" />
+    <ClCompile Include="DiagnosticsState.cpp" />
     <ClCompile Include="ICellularChannel.cpp" />
     <ClCompile Include="CommunicationDecorator.cpp" />
     <ClCompile Include="CommunicationEncryptorDecorator.cpp" />
@@ -156,8 +159,10 @@
     <ClCompile Include="GroundEnvironment.cpp" />
     <ClCompile Include="HSPAChannel.cpp" />
     <ClCompile Include="HybridEngineFactory.cpp" />
+    <ClCompile Include="IdleState.cpp" />
     <ClCompile Include="IMapDirector.cpp" />
     <ClCompile Include="IMapSegmentBuilder.cpp" />
+    <ClCompile Include="IRobotState.cpp" />
     <ClCompile Include="LidarNavigationFactory.cpp" />
     <ClCompile Include="LTEChannel.cpp" />
     <ClCompile Include="CellularCommunicationFactory.cpp" />
@@ -212,8 +217,11 @@
     <ClInclude Include="BatteryFactory.h" />
     <ClInclude Include="CellularChannelPool.h" />
     <ClInclude Include="CentralController.h" />
+    <ClInclude Include="ChargingState.h" />
     <ClInclude Include="CombustionEngine.h" />
     <ClInclude Include="CombustionEngineFactory.h" />
+    <ClInclude Include="DeliveringState.h" />
+    <ClInclude Include="DiagnosticsState.h" />
     <ClInclude Include="ICellularChannel.h" />
     <ClInclude Include="CommunicationDecorator.h" />
     <ClInclude Include="CommunicationEncryptorDecorator.h" />
@@ -234,8 +242,10 @@
     <ClInclude Include="GroundEnvironment.h" />
     <ClInclude Include="HSPAChannel.h" />
     <ClInclude Include="HybridEngineFactory.h" />
+    <ClInclude Include="IdleState.h" />
     <ClInclude Include="IMapDirector.h" />
     <ClInclude Include="IMapSegmentBuilder.h" />
+    <ClInclude Include="IRobotState.h" />
     <ClInclude Include="LidarNavigationFactory.h" />
     <ClInclude Include="LTEChannel.h" />
     <ClInclude Include="CellularCommunicationFactory.h" />

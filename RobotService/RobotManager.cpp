@@ -14,7 +14,7 @@ void RobotManager::returnAllRobotsToBase()
     ProxyIterator<IRobot*> it(collection.begin());
     while (it.hasNext()) {
         IRobot* robot = *(it.next());
-        robot->stopDelivery();
+        robot->wait();
 		robot->moveTo(baseLocation);
         std::cout << "Робот переведен на базу.\n";
     }
@@ -28,7 +28,7 @@ void RobotManager::emergencyStopAllRobots()
     ProxyIterator<IRobot*> it(collection.begin());
     while (it.hasNext()) {
         IRobot* robot = *(it.next());
-        robot->stopDelivery();
+        robot->wait();
     }
     std::cout << "Все роботы остановлены.\n";
 }
@@ -54,10 +54,12 @@ void RobotManager::sendLowBatteryRobotsToCharge(double minBatteryLevel)
     while (it.hasNext()) {
         IRobot* robot = *(it.next());
 
-		double batteryLevel = robot->getPowerSource().getCharge();
+		double batteryLevel = robot->getPowerSource()->getCharge();
 
         if (batteryLevel < minBatteryLevel) {
+            robot->startCharging();
 			robot->moveTo(chargeLocation);
+            robot->execute();
         }
     }
 }

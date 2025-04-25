@@ -21,12 +21,30 @@ void RobotGroup::startDelivery(const std::string& destination)
 	}
 }
 
-void RobotGroup::stopDelivery()
+void RobotGroup::startCharging()
 {
-	//Аналогично
+	//Делегируем вызов всем роботам в группе
 	auto it = ProxyIterator<IRobot*>(robots->begin());
 	while (it.hasNext()) {
-		(*it.next())->stopDelivery();
+		(*it.next())->startCharging();
+	}
+}
+
+void RobotGroup::runDiagnostics()
+{
+	//Делегируем вызов всем роботам в группе
+	auto it = ProxyIterator<IRobot*>(robots->begin());
+	while (it.hasNext()) {
+		(*it.next())->runDiagnostics();
+	}
+}
+
+void RobotGroup::wait()
+{
+	//Делегируем вызов всем роботам в группе
+	auto it = ProxyIterator<IRobot*>(robots->begin());
+	while (it.hasNext()) {
+		(*it.next())->wait();
 	}
 }
 

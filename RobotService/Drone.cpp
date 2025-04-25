@@ -1,35 +1,5 @@
 #include "Drone.h"
 
-void Drone::startDelivery(const std::string& destination)
-{
-    try
-    {
-        communication->establishConnection();
-        std::cout << "Дрон " << robotID << " (" << modelName
-            << ") взлетает и начинает доставку до " << destination << ".\n";
-        moveTo(destination);
-        communication->sendData("Дрон: начал доставку.");
-    }
-    catch (const std::exception& e)
-    {
-		//Если не удалось осуществить доставку, то дрон приземляется
-		stopDelivery();
-
-		std::cout << "Дрон " << robotID << " (" << modelName
-			<< ") не может осуществить доставку: "
-            << e.what() << "\n";
-    }
-}
-
-void Drone::stopDelivery()
-{
-    std::cout << "Дрон " << robotID << " (" << modelName
-        << ") приземляется и заканчивает доставку.\n";
-    engine->stop();
-    communication->sendData("Дрон: прекратил доставку.");
-    communication->disconnect();
-}
-
 void Drone::checkStatus()
 {
     std::cout << "Дрон " << robotID

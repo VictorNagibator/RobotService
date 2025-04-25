@@ -8,8 +8,6 @@ public:
         INavigation* nav, ICommunication* comm, IPowerSource* power)
         : IRobot(id, model, eng, nav, comm, power) {}
 
-    void startDelivery(const std::string& destination) override;
-    void stopDelivery() override;
     void checkStatus() override;
 
 	void moveTo(const std::string& destination) override;

@@ -240,6 +240,21 @@
     <ClCompile Include="AdvancedMapDirector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="IRobotState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IdleState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DeliveringState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChargingState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DiagnosticsState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IEngine.h">
@@ -465,6 +480,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AdvancedMapDirector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IRobotState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IdleState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DeliveringState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChargingState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DiagnosticsState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

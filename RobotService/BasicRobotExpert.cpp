@@ -16,8 +16,8 @@ int BasicRobotExpert::countSuitableRobots() const
 	while (it.hasNext()) {
 		IRobot* robot = *(it.next());
 
-		double robotCharge = robot->getPowerSource().getCharge();
-		double robotTemperature = robot->getEngine().getTemperature();
+		double robotCharge = robot->getPowerSource()->getCharge();
+		double robotTemperature = robot->getEngine()->getTemperature();
 
 		//Считаем для условий по доставке
 		if (robotCharge >= minBatteryLevelForDelivery && robotTemperature <= maxTemperatureForDelivery) {
@@ -34,8 +34,8 @@ int BasicRobotExpert::countRobotsInNeedOfService() const
 	while (it.hasNext()) {
 		IRobot* robot = *(it.next());
 
-		double robotCharge = robot->getPowerSource().getCharge();
-		double robotTemperature = robot->getEngine().getTemperature();
+		double robotCharge = robot->getPowerSource()->getCharge();
+		double robotTemperature = robot->getEngine()->getTemperature();
 
 		//Считаем для критических условий
 		if (robotCharge < minBatteryLevel || robotTemperature > maxSafeTemperatureForEngine) {

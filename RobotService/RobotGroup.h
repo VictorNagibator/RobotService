@@ -17,7 +17,10 @@ public:
 
 	//Переопределенные методы IRobot
     void startDelivery(const std::string& destination) override;
-    void stopDelivery() override;
+    void startCharging();
+    void runDiagnostics();
+    void wait();
+
     void checkStatus() override;
 	void moveTo(const std::string& destination) override;
     IRobot* clone() const override;
