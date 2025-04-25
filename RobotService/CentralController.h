@@ -24,6 +24,11 @@ public:
 		IAggregate<IRobot*>* collection = new MyList<IRobot*>()
 	);
 
+	//ћетод дл€ сохранени€ состо€ни€ контроллера
+	ControllerSnapshot* saveState() override;
+	//ћетод дл€ восстановлени€ состо€ни€ контроллера
+	void restoreState(ControllerSnapshot* m) override;
+
 	//ќстальные методы оставл€ем такими же
     void addRobot(IRobot* robot) override;
 	void removeRobot(IRobot* robot) override;

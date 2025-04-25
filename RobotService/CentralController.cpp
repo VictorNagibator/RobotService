@@ -62,3 +62,29 @@ const IAggregate<IRobot*>& CentralController::getRobots() const
 {
     return *robots;
 }
+
+ControllerSnapshot* CentralController::saveState()
+{
+	std::cout << controllerName << ": сохранение состояния контроллера...\n";
+
+	//Создаем копию коллекции роботов
+	MyList<IRobot*>* robotsCopy = new MyList<IRobot*>();
+
+    auto it = ProxyIterator<IRobot*>(robots->begin());
+    while (it.hasNext()) {
+        IRobot* currentRobot = *(it.next());
+		robotsCopy->push(currentRobot->clone()); //Копируем робота через прототипа
+    }
+
+	return IController::makeSnapshot(controllerName, robotsCopy); //Создаем снимок состояния контроллера
+}
+
+void CentralController::restoreState(ControllerSnapshot* m)
+{
+	std::cout << controllerName << ": восстановление состояния контроллера...\n";
+	//Удаляем старую коллекцию роботов
+	delete robots;
+
+	controllerName = IController::getName(m); //Восстанавливаем имя контроллера
+	robots = IController::getRobots(m); //Восстанавливаем коллекцию из снимка
+}

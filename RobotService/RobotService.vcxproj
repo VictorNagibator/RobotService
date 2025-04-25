@@ -138,6 +138,7 @@
     <ClCompile Include="ChargingState.cpp" />
     <ClCompile Include="CombustionEngine.cpp" />
     <ClCompile Include="CombustionEngineFactory.cpp" />
+    <ClCompile Include="ControllerSnapshot.cpp" />
     <ClCompile Include="DeliveringState.cpp" />
     <ClCompile Include="DiagnosticsState.cpp" />
     <ClCompile Include="ICellularChannel.cpp" />
@@ -220,6 +221,7 @@
     <ClInclude Include="ChargingState.h" />
     <ClInclude Include="CombustionEngine.h" />
     <ClInclude Include="CombustionEngineFactory.h" />
+    <ClInclude Include="ControllerSnapshot.h" />
     <ClInclude Include="DeliveringState.h" />
     <ClInclude Include="DiagnosticsState.h" />
     <ClInclude Include="ICellularChannel.h" />

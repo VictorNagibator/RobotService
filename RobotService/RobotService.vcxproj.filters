@@ -255,6 +255,9 @@
     <ClCompile Include="DiagnosticsState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ControllerSnapshot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IEngine.h">
@@ -495,6 +498,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DiagnosticsState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerSnapshot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
