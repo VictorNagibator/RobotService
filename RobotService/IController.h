@@ -4,14 +4,14 @@
 #include "ControllerSnapshot.h"
 
 //»нтерфейс центрального контроллера
-class IController {
+class IController : public IObserver {
 protected:
     std::string controllerName;
 
     //¬спомогательные методы, чтобы иметь доступ к пол€м friend класса наследникам
     ControllerSnapshot* makeSnapshot(std::string name, IAggregate<IRobot*>* robots) const;
-    std::string getName(ControllerSnapshot* snap) const;
-	IAggregate<IRobot*>* getRobots(ControllerSnapshot* snap) const;
+    std::string getNameFromSnapshot(ControllerSnapshot* snap) const;
+	IAggregate<IRobot*>* getRobotsFromSnapshot(ControllerSnapshot* snap) const;
 public:
 	IController(const std::string& name) : controllerName(name) {};
 
@@ -23,6 +23,8 @@ public:
 	virtual void removeRobot(IRobot* robot) = 0;
     virtual void dispatchDelivery(IRobot* robot, const std::string& destination) = 0;
     virtual void monitorRobots() const = 0;
+
+	virtual void update(const std::string& message) override; //ћетод дл€ обновлени€ состо€ни€ контроллера
 
     virtual const IAggregate<IRobot*>& getRobots() const = 0;
 };

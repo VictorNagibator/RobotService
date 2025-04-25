@@ -15,6 +15,7 @@ CentralController* CentralController::getInstance(const std::string& name, IAggr
 
 void CentralController::addRobot(IRobot* robot)
 {
+	robot->attach(this); //Добавляем контроллер как наблюдателя к роботу
     robots->push(robot);
     std::cout << controllerName << ": робот добавлен.\n";
 }
@@ -33,10 +34,9 @@ void CentralController::dispatchDelivery(IRobot* robot, const std::string& desti
     }
     if (!isRobotInCollection) throw std::invalid_argument("Робот не зарегистрирован в системе!");
 
-    std::cout << controllerName << ": назначение доставки до " << destination << "\n";
     robot->startDelivery(destination);
-
-    //В дальнейшем можно будет добавить логику ожидания, контроля процесса доставки и т.д.
+    
+    robot->execute(); //В дальнейшем можно будет добавить логику ожидания, контроля процесса доставки и т.д.
 
     robot->wait();
 }
@@ -55,6 +55,10 @@ void CentralController::monitorRobots() const
 
 void CentralController::removeRobot(IRobot* robot)
 {
+	//Удаляем контроллер как наблюдателя у робота
+	robot->detach(this);
+	std::cout << controllerName << ": удаление робота из системы...\n";
+	//Удаляем робота из коллекции
 	robots->remove(robot);
 }
 
@@ -85,6 +89,6 @@ void CentralController::restoreState(ControllerSnapshot* m)
 	//Удаляем старую коллекцию роботов
 	delete robots;
 
-	controllerName = IController::getName(m); //Восстанавливаем имя контроллера
-	robots = IController::getRobots(m); //Восстанавливаем коллекцию из снимка
+	controllerName = IController::getNameFromSnapshot(m); //Восстанавливаем имя контроллера
+	robots = IController::getRobotsFromSnapshot(m); //Восстанавливаем коллекцию из снимка
 }

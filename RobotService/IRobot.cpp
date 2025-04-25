@@ -4,6 +4,8 @@
 #include "DeliveringState.h"
 #include "ChargingState.h"
 #include "DiagnosticsState.h"
+#include "ProxyIterator.h"
+#include "MyList.h"
 
 IRobot::IRobot(int id, const std::string& model, IEngine* eng,
     INavigation* nav, ICommunication* comm, IPowerSource* power)
@@ -16,6 +18,15 @@ IRobot::IRobot(int id, const std::string& model, IEngine* eng,
     powerSource = power;
 
 	state = new IdleState(this); //Изначально робот в состоянии ожидания
+
+	observers = new MyList<IObserver*>(); //Создаем список наблюдателей
+}
+
+//Деструктор разрушает те объекты, которые были созданы в конструкторе
+IRobot::~IRobot()
+{
+	delete state; //Удаляем текущее состояние
+	delete observers; //Удаляем список наблюдателей
 }
 
 void IRobot::changeState(IRobotState* s)
@@ -44,22 +55,30 @@ void IRobot::startDelivery(const std::string& destination)
 { 
 	auto deliveryState = new DeliveringState(this);
 	deliveryState->setDestination(destination); //Установить точку назначения
-    changeState(deliveryState); 
+    changeState(deliveryState);
+	message = "Робот доставляет груз"; //Уведомить наблюдателей о смене состояния
+	notify();
 }
 
 void IRobot::startCharging() 
 { 
     changeState(new ChargingState(this)); 
+	message = "Робот на зарядке"; //Уведомить наблюдателей о смене состояния
+	notify();
 }
 
 void IRobot::runDiagnostics()
 { 
     changeState(new DiagnosticsState(this)); 
+	message = "Робот проходит диагностику"; //Уведомить наблюдателей о смене состояния
+	notify();
 }
 
 void IRobot::wait()
 {
 	changeState(new IdleState(this));
+	message = "Робот ожидает"; //Уведомить наблюдателей о смене состояния
+	notify();
 }
 
 IEngine* IRobot::getEngine() const
@@ -90,4 +109,30 @@ int IRobot::getRobotID() const
 std::string IRobot::getModelName() const
 {
 	return modelName;
+}
+
+void IRobot::attach(IObserver* observer)
+{
+	observers->push(observer);
+}
+
+void IRobot::detach(IObserver* observer)
+{
+	observers->remove(observer);
+}
+
+void IRobot::notify()
+{
+	auto it = ProxyIterator<IObserver*>(observers->begin());
+	while (it.hasNext()) {
+		IObserver* current = *(it.next());
+		//Вызываем обновление состояния для каждого робота
+		current->update(message);
+	}
+}
+
+void IRobot::setMessage(const std::string& msg)
+{
+	message = "[Робот " + robotID;
+	message += "]: " + msg;
 }

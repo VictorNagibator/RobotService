@@ -25,7 +25,7 @@ public:
     virtual void setTemperature(int newTemperature);
     virtual int getTemperature() const;
 
-    virtual std::string getName() const;
+    virtual std::string getNameFromSnapshot() const;
     virtual int getMaxRPM() const;
     virtual int getTemperatureThreshold() const;
     IEnvironment* getEnvironment() const;

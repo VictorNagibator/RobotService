@@ -4,11 +4,13 @@
 #include "ICommunication.h"
 #include "INavigation.h"
 #include "Prototype.h"
+#include "ISubject.h"
+#include "IAggregate.h"
 
 class IRobotState; //Объявляем класс, так как иначе происходит циклический include
 
 //Интерфейс робота
-class IRobot : public Prototype {
+class IRobot : public Prototype, public ISubject {
 protected:
     int robotID; //Уникальный номер робота
     std::string modelName; //Название модели
@@ -19,10 +21,15 @@ protected:
 
 	IRobotState* state; //Состояние робота (например, "доставляет", "ожидает", "в пути" и т.д.)
 
+	IAggregate<IObserver*>* observers; //Наблюдатели, которые следят за состоянием робота
+	std::string message; //Сообщение для наблюдателей
+
 	virtual void changeState(IRobotState* s); //Сменить состояние робота
 public:
     IRobot(int id, const std::string& model, IEngine* engine,
         INavigation* nav, ICommunication* comm, IPowerSource* power);
+
+    virtual ~IRobot();
 
     //Выполнить действие
     virtual void execute();
@@ -46,4 +53,11 @@ public:
 	virtual IPowerSource* getPowerSource() const;
 
     virtual IRobot* clone() const = 0;
+
+	//Методы для работы с наблюдателями
+	virtual void attach(IObserver* observer) override; //Добавить наблюдателя
+	virtual void detach(IObserver* observer) override; //Удалить наблюдателя
+	virtual void notify() override; //Уведомить наблюдателей
+
+	virtual void setMessage(const std::string& msg); //Установить сообщение для наблюдателей
 };

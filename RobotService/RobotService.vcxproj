@@ -163,7 +163,9 @@
     <ClCompile Include="IdleState.cpp" />
     <ClCompile Include="IMapDirector.cpp" />
     <ClCompile Include="IMapSegmentBuilder.cpp" />
+    <ClCompile Include="IObserver.cpp" />
     <ClCompile Include="IRobotState.cpp" />
+    <ClCompile Include="ISubject.cpp" />
     <ClCompile Include="LidarNavigationFactory.cpp" />
     <ClCompile Include="LTEChannel.cpp" />
     <ClCompile Include="CellularCommunicationFactory.cpp" />
@@ -247,7 +249,9 @@
     <ClInclude Include="IdleState.h" />
     <ClInclude Include="IMapDirector.h" />
     <ClInclude Include="IMapSegmentBuilder.h" />
+    <ClInclude Include="IObserver.h" />
     <ClInclude Include="IRobotState.h" />
+    <ClInclude Include="ISubject.h" />
     <ClInclude Include="LidarNavigationFactory.h" />
     <ClInclude Include="LTEChannel.h" />
     <ClInclude Include="CellularCommunicationFactory.h" />

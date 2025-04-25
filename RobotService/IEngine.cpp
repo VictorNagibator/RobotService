@@ -33,7 +33,7 @@ int IEngine::getTemperature() const
     return currentTemperature;
 }
 
-std::string IEngine::getName() const
+std::string IEngine::getNameFromSnapshot() const
 {
     return engineName;
 }

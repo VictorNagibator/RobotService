@@ -1,11 +1,11 @@
 #include "IController.h"
 
-std::string IController::getName(ControllerSnapshot* snap) const 
+std::string IController::getNameFromSnapshot(ControllerSnapshot* snap) const 
 {
 	return snap->name;
 }
 
-IAggregate<IRobot*>* IController::getRobots(ControllerSnapshot* snap) const
+IAggregate<IRobot*>* IController::getRobotsFromSnapshot(ControllerSnapshot* snap) const
 {
 	return snap->robots;
 }
@@ -13,4 +13,9 @@ IAggregate<IRobot*>* IController::getRobots(ControllerSnapshot* snap) const
 ControllerSnapshot* IController::makeSnapshot(std::string name, IAggregate<IRobot*>* robots) const
 {
 	return new ControllerSnapshot(name, robots);
+}
+
+void IController::update(const std::string& message)
+{
+	std::cout << controllerName << ":  " << message << "\n";
 }
