@@ -17,5 +17,5 @@ ControllerSnapshot* IController::makeSnapshot(std::string name, IAggregate<IRobo
 
 void IController::update(const std::string& message)
 {
-	std::cout << controllerName << ":  " << message << "\n";
+	std::cout << "[Наблюдение] " << controllerName << " получил сообщение:  " << message << "\n";
 }

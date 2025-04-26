@@ -28,7 +28,7 @@ void StatusReportVisitor::visit(const ICommunication& c)
 
 void StatusReportVisitor::visit(const IPowerSource& p) 
 {
-    oss << "[Система питания] Среда: " << p.getEnvironment()
+    oss << "[Система питания] Среда: " << p.getEnvironment()->getEnvironmentName()
         << ", Уровень заряда: " << p.getCharge() << "%\n";
 }
 

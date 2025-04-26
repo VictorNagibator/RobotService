@@ -33,11 +33,11 @@ public:
     void addRobot(IRobot* robot) override;
 	void removeRobot(IRobot* robot) override;
     void dispatchDelivery(
+		const std::string& destination,
 		IRobot* robot,
-		const std::string& machineLocation,
-		int itemID,
-		IVendingMachine* vendingMachine,
-		const std::string& destination
+		const std::string& machineLocation = "",
+		int itemID = -1,
+		IVendingMachine* vendingMachine = nullptr
 	) override;
     void monitorRobots() const override;
 

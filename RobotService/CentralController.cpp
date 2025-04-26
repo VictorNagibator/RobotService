@@ -21,11 +21,11 @@ void CentralController::addRobot(IRobot* robot)
 }
 
 void CentralController::dispatchDelivery(
-    IRobot* robot, 
+    const std::string& destination,
+    IRobot* robot,
     const std::string& machineLocation,
     int itemID,
-    IVendingMachine* vendingMachine,
-    const std::string& destination
+    IVendingMachine* vendingMachine
 )
 {
 	//Можно назначать доставку только зарегистрированным роботам

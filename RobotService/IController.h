@@ -22,11 +22,11 @@ public:
     virtual void addRobot(IRobot* robot) = 0;
 	virtual void removeRobot(IRobot* robot) = 0;
     virtual void dispatchDelivery(
-        IRobot* robot, 
+        const std::string& destination,
+        IRobot* robot,
         const std::string& machineLocation,
         int itemID,
-        IVendingMachine* vendingMachine,
-        const std::string& destination
+        IVendingMachine* vendingMachine
     ) = 0;
     virtual void monitorRobots() const = 0;
 
