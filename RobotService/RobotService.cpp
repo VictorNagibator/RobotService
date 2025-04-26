@@ -44,6 +44,9 @@ int main() {
     robot->wait();
     std::cout << std::endl;
 
+    robot->runDiagnostics();
+    robot->execute();
+
     delete robot;
     delete coffee;
     delete parcel;

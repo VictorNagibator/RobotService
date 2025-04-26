@@ -65,3 +65,9 @@ GPSNavigation* GPSNavigation::clone() const
 {
 	return new GPSNavigation(*this);
 }
+
+bool GPSNavigation::selfTest() const
+{
+    if (!currentMap || satelliteCount <= 0) return false;
+    return true;
+}

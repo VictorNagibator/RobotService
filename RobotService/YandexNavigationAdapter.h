@@ -16,5 +16,7 @@ public:
     void updatePosition(double newX, double newY) override;
     void adjustRoute() override;
 
+	bool selfTest() const override;
+
     YandexNavigationAdapter* clone() const override;
 };

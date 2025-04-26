@@ -17,6 +17,9 @@ public:
     virtual void updatePosition(double newX, double newY);
     //Коррекция маршрута при возникновении препятствий
     virtual void adjustRoute() = 0;
+    
+    //Проверка системы навигации
+	virtual bool selfTest() const = 0;
 
     //Можно поменять среду
     virtual void setEnvironment(IEnvironment* env);

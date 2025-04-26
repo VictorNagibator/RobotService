@@ -25,4 +25,6 @@ public:
     void updateLatency(int newLatency);
 
     CellularCommunication* clone() const override;
+
+    int getSignalStrength() const override;
 };

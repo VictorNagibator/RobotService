@@ -14,5 +14,7 @@ public:
     void updatePosition(double newX, double newY) override;
     void adjustRoute() override;
 
+	bool selfTest() const override;
+
     LidarNavigation* clone() const override;
 };

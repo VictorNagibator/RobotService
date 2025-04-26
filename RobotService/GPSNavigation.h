@@ -20,5 +20,7 @@ public:
     void updatePosition(double newX, double newY) override;
     void adjustRoute() override;
 
+	bool selfTest() const override;
+
     GPSNavigation* clone() const override;
 };

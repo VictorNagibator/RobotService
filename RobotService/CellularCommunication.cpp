@@ -51,3 +51,9 @@ CellularCommunication* CellularCommunication::clone() const
 {
 	return new CellularCommunication(*this);
 }
+
+int CellularCommunication::getSignalStrength() const 
+{
+	if (channel) return ICommunication::getSignalStrength(); //Если канал подключен, то возвращаем уровень сигнала
+	return 0; //Если канал не подключен, то возвращаем 0
+}

@@ -21,8 +21,8 @@ public:
     virtual std::string receiveCommand() = 0;
     
 	//Получение силы сигнала
-	int getSignalStrength() const;
-    IEnvironment* getEnvironment() const;
+	virtual int getSignalStrength() const;
+    virtual IEnvironment* getEnvironment() const;
 
 	//Можно поменять среду (например, робот попал под ливень или поменял способ передвижения)
 	virtual void setEnvironment(IEnvironment* env);

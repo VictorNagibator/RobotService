@@ -26,3 +26,8 @@ YandexNavigationAdapter* YandexNavigationAdapter::clone() const
 {
 	return new YandexNavigationAdapter(*this);
 }
+
+bool YandexNavigationAdapter::selfTest() const
+{
+	return true; //яндекс всегда работает :)
+}

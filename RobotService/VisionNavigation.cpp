@@ -36,3 +36,9 @@ VisionNavigation* VisionNavigation::clone() const
 {
 	return new VisionNavigation(*this);
 }
+
+bool VisionNavigation::selfTest() const
+{
+	if (frameRate <= 0) return false;
+	return true;
+}

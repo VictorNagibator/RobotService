@@ -3,5 +3,5 @@
 
 INavigation* LidarNavigationFactory::createNavigation(IEnvironment* environment, double startX, double startY)
 {
-	return new LidarNavigation(environment, standartLaserFrequency, standartDetectionRange, startX, startY);
+	return new LidarNavigation(environment, standartDetectionRange, standartLaserFrequency, startX, startY);
 }

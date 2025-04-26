@@ -34,3 +34,9 @@ LidarNavigation* LidarNavigation::clone() const
 {
 	return new LidarNavigation(*this);
 }
+
+bool LidarNavigation::selfTest() const
+{
+	if (detectionRange <= 0) return false;
+    return true;
+}
