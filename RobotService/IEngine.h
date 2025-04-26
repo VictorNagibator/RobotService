@@ -2,8 +2,9 @@
 #include <string>
 #include "IEnvironment.h"
 #include "Prototype.h"
+#include "Visitable.h"
 
-class IEngine : public Prototype
+class IEngine : public Prototype, public Visitable
 {
 protected:
     IEnvironment* environment; //—реда, в которой работает двигатель
@@ -20,12 +21,12 @@ public:
     IEngine(const std::string& name, int maxRMP, int temperatureThreshold, IEnvironment* environment);
     virtual void start() = 0;
     virtual void stop() = 0;
+	virtual std::string getName() const;
     virtual void setRPM(int newRPM);
     virtual int getRPM() const;
     virtual void setTemperature(int newTemperature);
     virtual int getTemperature() const;
 
-    virtual std::string getNameFromSnapshot() const;
     virtual int getMaxRPM() const;
     virtual int getTemperatureThreshold() const;
     IEnvironment* getEnvironment() const;
@@ -35,4 +36,6 @@ public:
     
 	//ћожно уточнить возвращаемый тип, так как IEngine €вл€етс€ наследником Prototype
 	virtual IEngine* clone() const = 0;
+
+    virtual void accept(IComponentVisitor& v) const override;
 };

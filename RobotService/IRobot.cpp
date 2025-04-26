@@ -176,3 +176,11 @@ void IRobot::setMessage(const std::string& msg)
 	message = "[Робот " + robotID;
 	message += "]: " + msg;
 }
+
+void IRobot::accept(IComponentVisitor& visitor) const
+{
+	engine->accept(visitor);
+	navigation->accept(visitor);
+	communication->accept(visitor);
+	powerSource->accept(visitor);
+}

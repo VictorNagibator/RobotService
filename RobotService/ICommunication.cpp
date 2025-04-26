@@ -20,3 +20,8 @@ IEnvironment* ICommunication::getEnvironment() const
 {
 	return environment;
 }
+
+void ICommunication::accept(IComponentVisitor& v) const
+{
+	v.visit(*this);
+}

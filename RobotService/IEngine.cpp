@@ -33,11 +33,6 @@ int IEngine::getTemperature() const
     return currentTemperature;
 }
 
-std::string IEngine::getNameFromSnapshot() const
-{
-    return engineName;
-}
-
 int IEngine::getMaxRPM() const
 {
     return maxRPM;
@@ -56,4 +51,14 @@ void IEngine::setEnvironment(IEnvironment* env)
 IEnvironment* IEngine::getEnvironment() const
 {
     return environment;
+}
+
+std::string IEngine::getName() const
+{
+    return engineName;
+}
+
+void IEngine::accept(IComponentVisitor& v) const
+{
+	v.visit(*this);
 }

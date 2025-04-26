@@ -1,10 +1,11 @@
 #pragma once
 #include <string>
 #include "IEnvironment.h"
-#include "IPrototypeCommunication.h"
+#include "Prototype.h"
+#include "Visitable.h"
 
 //Абстрактный класс для средств связи
-class ICommunication : public IPrototypeCommunication {
+class ICommunication : public Prototype, public Visitable {
 protected:
     IEnvironment* environment; //Среда, в которой работает средство связи
     int signalStrength; //Сила сигнала
@@ -28,4 +29,6 @@ public:
 	virtual void setEnvironment(IEnvironment* env);
 
 	virtual ICommunication* clone() const = 0;
+
+    virtual void accept(IComponentVisitor& v) const override;
 };

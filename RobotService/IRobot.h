@@ -11,7 +11,7 @@
 class IRobotState; //Объявляем класс, так как иначе происходит циклический include
 
 //Интерфейс робота
-class IRobot : public Prototype, public ISubject {
+class IRobot : public Prototype, public ISubject, public Visitable {
 protected:
     int robotID; //Уникальный номер робота
     std::string modelName; //Название модели
@@ -63,4 +63,6 @@ public:
 	virtual void notify() override; //Уведомить наблюдателей
 
 	virtual void setMessage(const std::string& msg); //Установить сообщение для наблюдателей
+
+	virtual void accept(IComponentVisitor& v) const override; //Принять посещение
 };

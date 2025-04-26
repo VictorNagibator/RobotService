@@ -170,6 +170,7 @@
     <ClCompile Include="HSPAChannel.cpp" />
     <ClCompile Include="HybridEngineFactory.cpp" />
     <ClCompile Include="ICommand.cpp" />
+    <ClCompile Include="IComponentVisitor.cpp" />
     <ClCompile Include="IdleState.cpp" />
     <ClCompile Include="IMapDirector.cpp" />
     <ClCompile Include="IMapSegmentBuilder.cpp" />
@@ -207,6 +208,7 @@
     <ClCompile Include="Iterator.cpp" />
     <ClCompile Include="LidarNavigation.cpp" />
     <ClCompile Include="CellularCommunication.cpp" />
+    <ClCompile Include="StatusReportVisitor.cpp" />
     <ClCompile Include="StreetSegment.cpp" />
     <ClCompile Include="StreetSegmentFactory.cpp" />
     <ClCompile Include="MyListIterator.cpp" />
@@ -223,6 +225,7 @@
     <ClCompile Include="TrafficLight.cpp" />
     <ClCompile Include="VisionNavigation.cpp" />
     <ClCompile Include="VisionNavigationFactory.cpp" />
+    <ClCompile Include="Visitable.cpp" />
     <ClCompile Include="WaterEnvironment.cpp" />
     <ClCompile Include="WiFiCommunication.cpp" />
     <ClCompile Include="WiFiCommunicationFactory.cpp" />
@@ -274,6 +277,7 @@
     <ClInclude Include="HSPAChannel.h" />
     <ClInclude Include="HybridEngineFactory.h" />
     <ClInclude Include="ICommand.h" />
+    <ClInclude Include="IComponentVisitor.h" />
     <ClInclude Include="IdleState.h" />
     <ClInclude Include="IMapDirector.h" />
     <ClInclude Include="IMapSegmentBuilder.h" />
@@ -311,6 +315,7 @@
     <ClInclude Include="Iterator.h" />
     <ClInclude Include="LidarNavigation.h" />
     <ClInclude Include="CellularCommunication.h" />
+    <ClInclude Include="StatusReportVisitor.h" />
     <ClInclude Include="StreetSegment.h" />
     <ClInclude Include="StreetSegmentFactory.h" />
     <ClInclude Include="MyListIterator.h" />
@@ -326,6 +331,7 @@
     <ClInclude Include="TrafficLight.h" />
     <ClInclude Include="VisionNavigation.h" />
     <ClInclude Include="VisionNavigationFactory.h" />
+    <ClInclude Include="Visitable.h" />
     <ClInclude Include="WaterEnvironment.h" />
     <ClInclude Include="WiFiCommunication.h" />
     <ClInclude Include="WiFiCommunicationFactory.h" />

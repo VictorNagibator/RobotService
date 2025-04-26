@@ -15,7 +15,7 @@ public:
 	void setTemperature(int newTemperature) override;
 	int getTemperature() const override;
 
-	std::string getNameFromSnapshot() const override;
+	std::string getName() const override;
 	int getMaxRPM() const override;
 	int getTemperatureThreshold() const override;
 };

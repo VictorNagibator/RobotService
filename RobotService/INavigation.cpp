@@ -22,3 +22,18 @@ IEnvironment* INavigation::getEnvironment() const
 {
 	return environment;
 }
+
+double INavigation::getX() const
+{
+	return x;
+}
+
+double INavigation::getY() const
+{
+	return y;
+}
+
+void INavigation::accept(IComponentVisitor& v) const
+{
+	v.visit(*this);
+}

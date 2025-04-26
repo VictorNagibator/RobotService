@@ -3,8 +3,9 @@
 #include <iostream>
 #include "IEnvironment.h"
 #include "Prototype.h"
+#include "Visitable.h"
 
-class IPowerSource : public Prototype {
+class IPowerSource : public Prototype, public Visitable {
 protected:
     IEnvironment* environment;
 public:
@@ -24,4 +25,6 @@ public:
     virtual void setEnvironment(IEnvironment* env);
 
 	virtual IPowerSource* clone() const = 0;
+
+    virtual void accept(IComponentVisitor& v) const override;
 };
