@@ -9,7 +9,6 @@ void Drone::checkStatus()
 
 void Drone::moveTo(const std::string& destination)
 {
-    engine->start();
     powerSource->consume(30); //Для примера тратим какое-то количество топлива или энергии
 	navigation->navigate(destination);
 }

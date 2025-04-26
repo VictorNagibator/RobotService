@@ -13,7 +13,7 @@ void LidarNavigation::navigate(const std::string& destination)
 {
     std::cout << "Лидар: сканирую окружение в радиусе "
         << detectionRange << " м. с частотой лазера " << laserFrequency
-        << " Гц для навигации до \"" << destination << "\"."
+        << " Гц для навигации до \"" << destination << "\". "
         << "Возможны неточности, коээфициент точности навигации: " << environment->getNavigationAccuracyFactor() << "\n";
 }
 

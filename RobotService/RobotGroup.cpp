@@ -12,12 +12,14 @@ void RobotGroup::removeRobot(IRobot* robot)
 	robots->remove(robot);
 }
 
-void RobotGroup::startDelivery(const std::string& destination)
+void RobotGroup::startDelivery(const std::string& destination, const std::string& machineLocation,
+	int itemID,
+	IVendingMachine* vendingMachine)
 {
 	//Делегируем вызов всем роботам в группе
 	auto it = ProxyIterator<IRobot*>(robots->begin());
 	while (it.hasNext()) {
-		(*it.next())->startDelivery(destination);
+		(*it.next())->startDelivery(destination, machineLocation, itemID, vendingMachine);
 	}
 }
 

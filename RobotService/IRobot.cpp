@@ -6,6 +6,12 @@
 #include "DiagnosticsState.h"
 #include "ProxyIterator.h"
 #include "MyList.h"
+#include "ChargePaymentCommand.h"
+#include "CheckStockCommand.h"
+#include "OpenDoorCommand.h"
+#include "DispenseItemCommand.h"
+#include "CloseDoorCommand.h"
+#include "PrintReceiptCommand.h"
 
 IRobot::IRobot(int id, const std::string& model, IEngine* eng,
     INavigation* nav, ICommunication* comm, IPowerSource* power)
@@ -51,12 +57,46 @@ void IRobot::execute()
 }
 
 //Методы для смены состояния
-void IRobot::startDelivery(const std::string& destination) 
+void IRobot::startDelivery(const std::string& destination, const std::string& machineLocation,
+	int itemID,
+	IVendingMachine* vendingMachine)
 { 
-	auto deliveryState = new DeliveringState(this);
-	deliveryState->setDestination(destination); //Установить точку назначения
-    changeState(deliveryState);
-	message = "Робот доставляет груз"; //Уведомить наблюдателей о смене состояния
+	auto st = new DeliveringState(this);
+	st->setDestination(destination);
+	changeState(st);
+
+	if (vendingMachine != nullptr) {
+		navigation->navigate(machineLocation);
+		communication->sendData("Прибыл к автомату");
+
+		//Команды для работы с автоматом
+		std::vector<ICommand*> cmds = {
+			new CheckStockCommand(itemID, vendingMachine),
+			new ChargePaymentCommand(itemID, vendingMachine),
+			new OpenDoorCommand(vendingMachine),
+			new DispenseItemCommand(itemID, vendingMachine),
+			new CloseDoorCommand(vendingMachine),
+			new PrintReceiptCommand(itemID, vendingMachine)
+		};
+
+		try {
+			for (auto c : cmds) {
+				c->execute(); //Выполняем команды
+			}
+		}
+		catch (const std::exception& e) {
+			//Отправляем сообщение об ошибке
+			communication->sendData(std::string("Ошибка: ") + e.what());
+			for (auto c : cmds) delete c;
+			return;
+		}
+		for (auto c : cmds) delete c; //Удаляем команды после выполнения
+
+		message = "Забрал товар " + std::to_string(itemID);
+		notify();
+	}
+
+	message = "Робот доставляет товар по адресу " + destination; //Уведомить наблюдателей о смене состояния
 	notify();
 }
 

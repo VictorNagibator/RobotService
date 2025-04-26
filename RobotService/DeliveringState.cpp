@@ -4,6 +4,7 @@
 void DeliveringState::enter()
 {
 	robot->getCommunication()->establishConnection();
+	robot->getEngine()->start();
 	std::cout << "[Робот №" << robot->getRobotID() << "] Вошел в состояние доставки" << std::endl;
 }
 

@@ -21,7 +21,13 @@ public:
 
     virtual void addRobot(IRobot* robot) = 0;
 	virtual void removeRobot(IRobot* robot) = 0;
-    virtual void dispatchDelivery(IRobot* robot, const std::string& destination) = 0;
+    virtual void dispatchDelivery(
+        IRobot* robot, 
+        const std::string& machineLocation,
+        int itemID,
+        IVendingMachine* vendingMachine,
+        const std::string& destination
+    ) = 0;
     virtual void monitorRobots() const = 0;
 
 	virtual void update(const std::string& message) override; //ћетод дл€ обновлени€ состо€ни€ контроллера

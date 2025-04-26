@@ -32,7 +32,13 @@ public:
 	//Остальные методы оставляем такими же
     void addRobot(IRobot* robot) override;
 	void removeRobot(IRobot* robot) override;
-    void dispatchDelivery(IRobot* robot, const std::string& destination) override;
+    void dispatchDelivery(
+		IRobot* robot,
+		const std::string& machineLocation,
+		int itemID,
+		IVendingMachine* vendingMachine,
+		const std::string& destination
+	) override;
     void monitorRobots() const override;
 
     const IAggregate<IRobot*>& getRobots() const override;

@@ -20,7 +20,13 @@ void CentralController::addRobot(IRobot* robot)
     std::cout << controllerName << ": робот добавлен.\n";
 }
 
-void CentralController::dispatchDelivery(IRobot* robot, const std::string& destination)
+void CentralController::dispatchDelivery(
+    IRobot* robot, 
+    const std::string& machineLocation,
+    int itemID,
+    IVendingMachine* vendingMachine,
+    const std::string& destination
+)
 {
 	//ћожно назначать доставку только зарегистрированным роботам
 	bool isRobotInCollection = false;
@@ -34,7 +40,7 @@ void CentralController::dispatchDelivery(IRobot* robot, const std::string& desti
     }
     if (!isRobotInCollection) throw std::invalid_argument("–обот не зарегистрирован в системе!");
 
-    robot->startDelivery(destination);
+    robot->startDelivery(destination, machineLocation, itemID, vendingMachine);
     
     robot->execute(); //¬ дальнейшем можно будет добавить логику ожидани€, контрол€ процесса доставки и т.д.
 

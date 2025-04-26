@@ -6,6 +6,7 @@
 #include "Prototype.h"
 #include "ISubject.h"
 #include "IAggregate.h"
+#include "IVendingMachine.h"
 
 class IRobotState; //ќбъ€вл€ем класс, так как иначе происходит циклический include
 
@@ -35,7 +36,9 @@ public:
     virtual void execute();
 
     //ћетоды дл€ смены состо€ни€
-    virtual void startDelivery(const std::string& destination);
+    virtual void startDelivery(const std::string& destination, const std::string& machineLocation = nullptr,
+        int itemID = -1,
+        IVendingMachine* vendingMachine = nullptr); 
     virtual void startCharging();
     virtual void runDiagnostics();
     virtual void wait();
